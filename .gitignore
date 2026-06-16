@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+
+*.tsbuildinfo
+*.log
+
+.env*
+!.env.example
+
+.npm-cache*/
+tmp/
