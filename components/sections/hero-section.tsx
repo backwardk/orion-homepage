@@ -78,9 +78,9 @@ export function HeroSection() {
               <div className="h-36 rounded-[1.5rem] bg-[linear-gradient(135deg,rgba(140,106,74,0.18),rgba(196,154,108,0.1)),radial-gradient(circle_at_68%_28%,rgba(196,154,108,0.34),transparent_28%)]" />
               <div className="space-y-4">
                 <div className="h-px w-full bg-line" />
-                <p className="text-4xl font-semibold leading-tight">Quiet notes for a curious life.</p>
+                <p className="text-4xl font-semibold leading-tight">{t(siteCopy.hero.noteTitle)}</p>
                 <p className="text-sm leading-6 text-muted">
-                  A personal archive of learning, reading, places, and small observations.
+                  {t(siteCopy.hero.noteBody)}
                 </p>
               </div>
             </div>

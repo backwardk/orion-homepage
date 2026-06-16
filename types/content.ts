@@ -20,7 +20,7 @@ export type Quote = {
 };
 
 export type ContactLink = {
-  label: string;
+  label: LocalizedText;
   href: string;
   icon: "mail" | "github" | "instagram";
 };

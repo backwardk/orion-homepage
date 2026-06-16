@@ -17,6 +17,14 @@ export const siteCopy = {
       zh: "记录成长，探索世界，保持好奇。",
       en: "Document growth, explore the world, and stay curious."
     },
+    noteTitle: {
+      zh: "给好奇生活的安静笔记。",
+      en: "Quiet notes for a curious life."
+    },
+    noteBody: {
+      zh: "关于学习、阅读、地点与日常观察的个人档案。",
+      en: "A personal archive of learning, reading, places, and small observations."
+    },
     actions: {
       about: { zh: "了解我", en: "About me" },
       garden: { zh: "阅读随笔", en: "Read essays" },
@@ -49,7 +57,8 @@ export const siteCopy = {
     description: {
       zh: "最近的记录先用模拟数据呈现，未来可以接入 Markdown。",
       en: "Recent notes are mocked for now and ready for a future Markdown workflow."
-    }
+    },
+    markdownReady: { zh: "可接入 Markdown", en: "Markdown ready" }
   },
   quote: {
     label: { zh: "今日一句", en: "A Line For Today" }
@@ -60,7 +69,8 @@ export const siteCopy = {
       zh: "如果你也喜欢技术、设计、阅读或城市漫步，欢迎从这里找到我。",
       en: "If you also care about technology, design, reading, or wandering through cities, you can find me here."
     },
-    built: { zh: "Built with Next.js", en: "Built with Next.js" }
+    built: { zh: "使用 Next.js 构建", en: "Built with Next.js" },
+    copyright: { zh: "© 2026 蒋荞宇", en: "© 2026 Qiaoyu Jiang" }
   }
 } satisfies Record<string, unknown>;
 

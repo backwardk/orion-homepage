@@ -37,7 +37,7 @@ export function DigitalGardenSection() {
                   <p className="mt-5 text-base leading-8 text-muted">{t(article.summary)}</p>
                 </div>
                 <div className="mt-8 flex items-center justify-between border-t border-line pt-5 text-sm text-accent">
-                  <span>Markdown ready</span>
+                  <span>{t(siteCopy.garden.markdownReady)}</span>
                   <ArrowUpRightIcon className="size-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </article>

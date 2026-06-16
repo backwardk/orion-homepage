@@ -23,20 +23,20 @@ export function ContactSection() {
             <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
               {contactLinks.map((link) => (
                 <a
-                  key={link.label}
+                  key={link.href}
                   href={link.href}
                   target={link.href.startsWith("http") ? "_blank" : undefined}
                   rel={link.href.startsWith("http") ? "noreferrer" : undefined}
                   className="flex items-center gap-3 rounded-full border border-line bg-background/60 px-4 py-3 text-sm font-medium transition hover:-translate-y-0.5 hover:border-accent/40 hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
                 >
                   <ContactIcon icon={link.icon} className="size-4" />
-                  {link.label}
+                  {t(link.label)}
                 </a>
               ))}
             </div>
           </div>
           <div className="mt-12 flex flex-col gap-3 border-t border-line pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-            <span>© 2026 Qiaoyu Jiang</span>
+            <span>{t(siteCopy.contact.copyright)}</span>
             <span>{t(siteCopy.contact.built)}</span>
           </div>
         </div>
