@@ -18,7 +18,7 @@ const notoSansSc = Noto_Sans_SC({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://qiaoyujiang.github.io"),
+  metadataBase: new URL("https://backwardk.github.io/orion-homepage/"),
   title: {
     default: "蒋荞宇 | Orion Jiang",
     template: "%s | Orion Jiang"
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "蒋荞宇 | Orion Jiang",
     description: "记录成长，探索世界，保持好奇。",
-    url: "https://qiaoyujiang.github.io",
+    url: "https://backwardk.github.io/orion-homepage/",
     siteName: "Orion Jiang",
     locale: "zh_CN",
     type: "website"

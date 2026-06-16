@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Reveal } from "@/components/motion";
 import { quotes } from "@/data/quotes";
 import { siteCopy } from "@/data/site";
-import { randomItem } from "@/lib/random";
+import { getNextQuoteIndex } from "@/lib/quote-rotation";
 import type { Quote } from "@/types/content";
 import { useLanguage } from "@/components/language-provider";
 
@@ -13,7 +13,7 @@ export function QuoteSection() {
   const { t } = useLanguage();
 
   useEffect(() => {
-    setQuote(randomItem(quotes));
+    setQuote(quotes[getNextQuoteIndex(quotes.length)]);
   }, []);
 
   return (

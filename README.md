@@ -17,6 +17,7 @@
 - 浅色 / 深色模式切换
 - 中文 / 英文切换
 - 克制的淡入、上移、Hover 动效
+- 今日一句会在两条内容之间随刷新轮换
 - 模拟文章数据，后续可接入 Markdown
 - GitHub Pages 静态导出
 - Vercel 可选部署
@@ -45,7 +46,7 @@ data/
   site.ts
 lib/
   format-date.ts
-  random.ts
+  quote-rotation.ts
 types/
   content.ts
 public/
