@@ -17,6 +17,12 @@ export type Interest = {
   icon: "book" | "map" | "code" | "camera" | "pen" | "palette" | "music";
 };
 
+export type LikeItem = {
+  title: LocalizedText;
+  category: LocalizedText;
+  description: LocalizedText;
+};
+
 export type Quote = {
   text: string;
   author?: string;

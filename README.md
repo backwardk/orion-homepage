@@ -106,6 +106,10 @@ npm.cmd run build
 
 页面文案集中在 `data/site.ts`，包含中文和英文两套内容。
 
+`Now / 最近在做什么` 也在 `data/site.ts` 中维护，适合更新正在学习、最近阅读和正在保持的习惯。
+
+`Likes / 喜欢的事物` 在 `data/likes.ts` 中维护，适合放书、工具、音乐、城市和设计偏好等低成本长期内容。
+
 ## 新增文章
 
 1. 在 `content/articles/` 新增 Markdown 文件，例如：
@@ -191,6 +195,8 @@ Vercel 可以直接导入仓库：
 
 - 个人信息优先放在 `data/site-config.ts`
 - 双语页面文案放在 `data/site.ts`
+- 近况内容放在 `data/site.ts` 的 `now`
+- 喜欢的事物放在 `data/likes.ts`
 - 文章元数据放在 `data/articles.ts`
 - 文章正文放在 `content/articles/`
 - 保持视觉克制、留白充足、链接真实可用

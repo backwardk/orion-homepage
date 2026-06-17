@@ -15,16 +15,16 @@ export const siteCopy = {
     name: "蒋荞宇",
     englishName: "Orion Jiang",
     tagline: {
-      zh: "记录成长，探索世界，保持好奇。",
-      en: "Document growth, explore the world, and stay curious."
+      zh: "学习、创造，也记录那些让生活变清楚的瞬间。",
+      en: "Learning, making, and noting the moments that make life clearer."
     },
     noteTitle: {
-      zh: "给好奇生活的安静笔记。",
-      en: "Quiet notes for a curious life."
+      zh: "学习型创作者的安静笔记。",
+      en: "Quiet notes from a learning-minded maker."
     },
     noteBody: {
-      zh: "关于学习、阅读、地点与日常观察的个人档案。",
-      en: "A personal archive of learning, reading, places, and small observations."
+      zh: "关于技术实践、阅读、地点与日常观察的个人档案。",
+      en: "A personal archive of technical practice, reading, places, and small observations."
     },
     actions: {
       about: { zh: "了解我", en: "About me" },
@@ -36,13 +36,13 @@ export const siteCopy = {
     title: { zh: "关于我", en: "About Me" },
     body: {
       zh: [
-        "我是一个持续学习的人，关心技术如何变成真实可用的工具，也关心设计、文字和生活秩序如何让人更安静地前进。",
-        "我喜欢阅读、旅行和观察城市里的日常细节。很多想法并不会立刻变成结论，所以我把它们放在这里，慢慢修剪、补充、回看。",
+        "我是一个持续学习的创作者，也在用技术练习把想法做成真实可用的东西。",
+        "我关心工具、设计和文字如何让复杂问题变清楚，也喜欢阅读、旅行和观察城市里的日常细节。",
         "这个网站是我的数字花园，用来记录想法、整理经验，也保存那些值得回味的时刻。"
       ],
       en: [
-        "I keep learning, with a steady interest in how technology becomes useful tools and how design, writing, and daily order help people move with more calm.",
-        "I enjoy reading, traveling, and noticing the small details inside cities. Not every thought becomes a conclusion immediately, so I keep them here to refine, add to, and revisit.",
+        "I am a learning-minded creator, using technology to practice turning ideas into things that can actually be used.",
+        "I care about how tools, design, and writing make complex problems clearer, and I enjoy reading, traveling, and noticing small city details.",
         "This website is my digital garden, a place to collect thoughts, organize experience, and keep moments worth returning to."
       ]
     },
@@ -56,27 +56,34 @@ export const siteCopy = {
     },
     items: [
       {
-        title: { zh: "整理个人知识库", en: "Organizing a personal knowledge base" },
+        title: { zh: "正在学习：把技术做成可用工具", en: "Learning: turning technology into useful tools" },
         body: {
-          zh: "把零散笔记归档成可回看的主题，减少信息堆积。",
-          en: "Turning scattered notes into themes that are easier to revisit."
+          zh: "继续练习前端、产品思维和自动化，把零散想法做成能被反复使用的小系统。",
+          en: "Practicing frontend work, product thinking, and automation by turning scattered ideas into reusable systems."
         }
       },
       {
-        title: { zh: "练习更稳定的输出", en: "Practicing steadier writing" },
+        title: { zh: "最近在读：长期主义与日常观察", en: "Reading: long-term thinking and daily observation" },
         body: {
-          zh: "用短篇随笔记录学习、阅读和城市观察。",
-          en: "Writing short notes on learning, reading, and city observations."
+          zh: "偏向那些能帮助我重新理解学习、城市、设计和生活秩序的内容。",
+          en: "Leaning toward writing that helps me rethink learning, cities, design, and personal order."
         }
       },
       {
-        title: { zh: "保持低噪音的生活节奏", en: "Keeping a low-noise rhythm" },
+        title: { zh: "正在保持：稳定输出和低噪音节奏", en: "Keeping: steady output and a low-noise rhythm" },
         body: {
-          zh: "让工具、计划和空间都服务于更清晰的注意力。",
-          en: "Letting tools, plans, and space serve clearer attention."
+          zh: "用短随笔、项目记录和定期整理，让注意力更多回到真正重要的事情上。",
+          en: "Using short notes, project records, and regular cleanup to return attention to what matters."
         }
       }
     ]
+  },
+  likes: {
+    title: { zh: "喜欢的事物", en: "Likes" },
+    description: {
+      zh: "一些会反复吸引我的偏好，也悄悄影响我如何学习、创造和生活。",
+      en: "A few recurring preferences that quietly shape how I learn, make, and live."
+    }
   },
   interests: {
     title: { zh: "兴趣", en: "Interests" },
