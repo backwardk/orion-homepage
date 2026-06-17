@@ -13,7 +13,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[92vh] items-center overflow-hidden px-5 pt-28 sm:px-8"
+      className="relative flex min-h-[86vh] items-center overflow-hidden px-5 pt-24 sm:min-h-[92vh] sm:px-8 sm:pt-28"
       aria-labelledby="hero-title"
     >
       <motion.div
@@ -26,7 +26,7 @@ export function HeroSection() {
         <div>
           <motion.h1
             id="hero-title"
-            className="max-w-3xl font-chinese text-6xl font-semibold leading-[1.04] text-foreground sm:text-7xl lg:text-8xl"
+            className="max-w-3xl font-chinese text-5xl font-semibold leading-[1.05] text-foreground sm:text-7xl lg:text-8xl"
             initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
             animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -34,7 +34,7 @@ export function HeroSection() {
             {siteCopy.hero.name}
           </motion.h1>
           <motion.p
-            className="mt-4 text-2xl font-medium text-accent sm:text-3xl"
+            className="mt-3 text-2xl font-medium text-accent sm:mt-4 sm:text-3xl"
             initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
             animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
@@ -42,7 +42,7 @@ export function HeroSection() {
             {siteCopy.hero.englishName}
           </motion.p>
           <motion.p
-            className="mt-8 max-w-xl text-xl leading-9 text-muted sm:text-2xl sm:leading-10"
+            className="mt-6 max-w-xl text-lg leading-8 text-muted sm:mt-8 sm:text-2xl sm:leading-10"
             initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
             animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
@@ -50,7 +50,7 @@ export function HeroSection() {
             {t(siteCopy.hero.tagline)}
           </motion.p>
           <motion.div
-            className="mt-10 flex flex-wrap gap-3"
+            className="mt-8 flex flex-wrap gap-3 sm:mt-10"
             initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
             animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}

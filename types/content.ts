@@ -3,8 +3,11 @@ export type Language = "zh" | "en";
 export type LocalizedText = Record<Language, string>;
 
 export type Article = {
+  slug: string;
   title: LocalizedText;
-  date: string;
+  publishedAt: string;
+  category: LocalizedText;
+  tags: LocalizedText[];
   summary: LocalizedText;
   readingTime: LocalizedText;
 };
@@ -23,4 +26,5 @@ export type ContactLink = {
   label: LocalizedText;
   href: string;
   icon: "mail" | "github" | "instagram";
+  enabled?: boolean;
 };

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">蒋荞宇 | Orion Jiang</title>
+  <desc id="desc">Personal homepage and digital garden</desc>
+  <rect width="1200" height="630" fill="#FAFAF7"/>
+  <circle cx="240" cy="160" r="180" fill="#C49A6C" opacity="0.18"/>
+  <circle cx="950" cy="70" r="220" fill="#8C6A4A" opacity="0.10"/>
+  <path d="M120 475H1080" stroke="#E5E0D8" stroke-width="2"/>
+  <text x="120" y="245" fill="#1C1C1C" font-family="Inter, 'Noto Sans SC', sans-serif" font-size="88" font-weight="650">蒋荞宇</text>
+  <text x="120" y="330" fill="#8C6A4A" font-family="Inter, 'Noto Sans SC', sans-serif" font-size="48" font-weight="520">Orion Jiang</text>
+  <text x="120" y="410" fill="#666666" font-family="Inter, 'Noto Sans SC', sans-serif" font-size="34">记录成长，探索世界，保持好奇。</text>
+  <g transform="translate(910 365)" fill="none" stroke="#8C6A4A" stroke-width="3">
+    <rect x="0" y="0" width="150" height="190" rx="75" opacity="0.28"/>
+    <circle cx="75" cy="64" r="30"/>
+    <path d="M35 138c20-32 61-32 82 0" stroke-linecap="round"/>
+    <path d="M75 18v152" stroke="#1C1C1C" stroke-dasharray="2 10" opacity="0.22"/>
+  </g>
+</svg>

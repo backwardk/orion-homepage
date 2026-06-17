@@ -8,6 +8,7 @@ import { useLanguage } from "@/components/language-provider";
 
 export function ContactSection() {
   const { t } = useLanguage();
+  const enabledLinks = contactLinks.filter((link) => link.enabled !== false && link.href);
 
   return (
     <footer id="contact" className="px-5 pb-10 pt-24 sm:px-8" aria-labelledby="contact-title">
@@ -20,8 +21,8 @@ export function ContactSection() {
               </h2>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">{t(siteCopy.contact.description)}</p>
             </div>
-            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-              {contactLinks.map((link) => (
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+              {enabledLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}

@@ -1,19 +1,21 @@
 import type { ContactLink } from "@/types/content";
+import { siteConfig } from "@/data/site-config";
 
 export const contactLinks: ContactLink[] = [
   {
     label: { zh: "邮箱", en: "Email" },
-    href: "mailto:978132296@qq.com",
+    href: `mailto:${siteConfig.email}`,
     icon: "mail"
   },
   {
     label: { zh: "GitHub", en: "GitHub" },
-    href: "https://github.com/backwardk",
+    href: siteConfig.githubUrl,
     icon: "github"
   },
   {
     label: { zh: "Instagram", en: "Instagram" },
-    href: "https://instagram.com/your-username",
-    icon: "instagram"
+    href: siteConfig.instagramUrl,
+    icon: "instagram",
+    enabled: Boolean(siteConfig.instagramUrl)
   }
 ];

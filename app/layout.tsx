@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Noto_Sans_SC } from "next/font/google";
 import type { ReactNode } from "react";
 import { Providers } from "@/components/providers";
+import { siteConfig } from "@/data/site-config";
 import "./globals.css";
 
 const inter = Inter({
@@ -18,27 +19,40 @@ const notoSansSc = Noto_Sans_SC({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://backwardk.github.io/orion-homepage/"),
+  metadataBase: new URL(`${siteConfig.siteUrl}/`),
   title: {
-    default: "蒋荞宇 | Orion Jiang",
-    template: "%s | Orion Jiang"
+    default: siteConfig.displayName,
+    template: `%s | ${siteConfig.englishName}`
   },
-  description: "蒋荞宇的个人主页。记录成长，探索世界，保持好奇。",
-  keywords: ["蒋荞宇", "Orion Jiang", "Personal Homepage", "Digital Garden", "Next.js"],
-  authors: [{ name: "Qiaoyu Jiang" }],
-  creator: "Qiaoyu Jiang",
+  description: siteConfig.description.zh,
+  keywords: ["蒋荞宇", "Orion Jiang", "Personal Homepage", "Digital Garden", "Next.js", "个人主页"],
+  authors: [{ name: siteConfig.copyrightName, url: siteConfig.githubUrl }],
+  creator: siteConfig.copyrightName,
+  alternates: {
+    canonical: "/"
+  },
   openGraph: {
-    title: "蒋荞宇 | Orion Jiang",
-    description: "记录成长，探索世界，保持好奇。",
-    url: "https://backwardk.github.io/orion-homepage/",
-    siteName: "Orion Jiang",
+    title: siteConfig.displayName,
+    description: siteConfig.description.zh,
+    url: siteConfig.siteUrl,
+    siteName: siteConfig.englishName,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.displayName
+      }
+    ],
     locale: "zh_CN",
+    alternateLocale: ["en_US"],
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "蒋荞宇 | Orion Jiang",
-    description: "记录成长，探索世界，保持好奇。"
+    title: siteConfig.displayName,
+    description: siteConfig.description.en,
+    images: [siteConfig.ogImage]
   }
 };
 
