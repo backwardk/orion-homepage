@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   }
 
   return {
-    title: `${article.title.zh} | ${siteConfig.englishName}`,
+    title: article.title.zh,
     description: article.summary.zh,
     alternates: {
       canonical: `/garden/${article.slug}/`
@@ -40,6 +40,12 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       images: [siteConfig.ogImage],
       type: "article",
       publishedTime: article.publishedAt
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title.zh,
+      description: article.summary.zh,
+      images: [siteConfig.ogImage]
     }
   };
 }
