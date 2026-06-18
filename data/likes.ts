@@ -53,8 +53,8 @@ export const likes: LikeItem[] = [
     category: { zh: "游戏", en: "Games" },
     title: { zh: "单机游戏", en: "Single-player Games" },
     description: {
-      zh: "喜欢沉浸式的单机体验，也会记录那些让我停下来思考的叙事、氛围和细节。",
-      en: "I enjoy immersive single-player experiences, and note the stories, atmosphere, and details that make me pause."
+      zh: "喜欢沉浸式的单机体验，也会记录那些值得回味的叙事、氛围和细节。",
+      en: "I enjoy immersive single-player experiences, and note the stories, atmosphere, and details worth remembering."
     }
   }
 ];

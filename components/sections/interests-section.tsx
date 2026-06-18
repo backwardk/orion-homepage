@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { InterestIcon } from "@/components/icon-map";
 import { Reveal } from "@/components/motion";
 import { interests } from "@/data/interests";
@@ -22,18 +23,36 @@ export function InterestsSection() {
           </div>
         </Reveal>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {interests.map((interest, index) => (
-            <Reveal key={interest.icon} delay={index * 0.035}>
-              <motion.div
-                whileHover={{ y: -5, scale: 1.015 }}
-                transition={{ duration: 0.25 }}
-                className="group flex min-h-36 flex-col justify-between rounded-2xl border border-line bg-surface/72 p-5 shadow-sm backdrop-blur transition hover:border-accent/35 hover:shadow-soft dark:hover:shadow-soft-dark"
-              >
+          {interests.map((interest, index) => {
+            const content = (
+              <>
                 <InterestIcon icon={interest.icon} className="size-6 text-accent" />
                 <span className="mt-8 text-lg font-medium">{t(interest.label)}</span>
-              </motion.div>
-            </Reveal>
-          ))}
+              </>
+            );
+            const cardClassName =
+              "group flex min-h-36 flex-col justify-between rounded-2xl border border-line bg-surface/72 p-5 shadow-sm backdrop-blur transition hover:border-accent/35 hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-accent/30 dark:hover:shadow-soft-dark";
+
+            return (
+              <Reveal key={interest.icon} delay={index * 0.035}>
+                {interest.href ? (
+                  <motion.div whileHover={{ y: -5, scale: 1.015 }} transition={{ duration: 0.25 }}>
+                    <Link href={interest.href} className={cardClassName} aria-label={t(interest.label)}>
+                      {content}
+                    </Link>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    whileHover={{ y: -5, scale: 1.015 }}
+                    transition={{ duration: 0.25 }}
+                    className={cardClassName}
+                  >
+                    {content}
+                  </motion.div>
+                )}
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

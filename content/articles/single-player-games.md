@@ -18,21 +18,21 @@
 - 叙事感：好的游戏会用行动、空间和细节讲故事。
 - 私密感：没有社交压力，也不需要证明自己玩得多好。
 
-### 让我停下来的瞬间
+### 留下来的瞬间
 
 有时候是一个场景，有时候是一段音乐，有时候是角色做出的选择。
 
-这些瞬间提醒我，游戏不只是娱乐，也是一种可以触发观察、情绪和思考的媒介。
+这些瞬间提醒我，游戏不只是娱乐，也能留下情绪、画面和节奏。
 
-### 它让我想到的事
+### 留下来的东西
 
-我会想，一个虚拟世界为什么会显得真实？一个选择为什么会让人犹豫？一个简单的场景为什么能留下很久？
+有些虚拟世界会显得真实，有些选择会让人犹豫，有些简单场景会留在记忆里。
 
-这些问题和设计、写作、生活观察其实有相通的地方。
+我想把这些片段放在这里，像保存一张路上的照片。
 
 ### 以后还想怎么记录
 
-我不打算把这里写成专业评测。更想记录的是：玩过什么，当时为什么喜欢，它留下了什么情绪，以及它让我想到什么。
+我不打算把这里写成专业评测。更想记录的是：玩过什么，当时为什么喜欢，以及它留下了什么情绪。
 
 如果某个游戏让我停下来，我就给它留一页。
 
@@ -56,20 +56,20 @@ If I do not write them down, they disappear quickly under new content. I want to
 - Storytelling: good games tell stories through action, space, and detail.
 - Privacy: no social pressure, and no need to prove how well I play.
 
-### Moments that make me pause
+### Moments that stay
 
 Sometimes it is a scene, sometimes a piece of music, sometimes a choice made by a character.
 
-These moments remind me that games are not only entertainment. They can also trigger observation, emotion, and thought.
+These moments remind me that games are not only entertainment. They can leave behind a mood, an image, or a rhythm.
 
-### What it makes me think about
+### What remains
 
-Why can a virtual world feel real? Why can a choice create hesitation? Why can a simple scene stay with me for a long time?
+A virtual world can feel real. A choice can create hesitation. A simple scene can stay in memory for a long time.
 
-These questions connect with design, writing, and daily observation more than I expected.
+I want to keep these fragments here, like saving a photo from a walk.
 
 ### How I want to keep recording
 
-I do not want this to become professional reviews. I want to record what I played, why I liked it at the time, what feeling it left behind, and what it made me think about.
+I do not want this to become professional reviews. I want to record what I played, why I liked it at the time, and what feeling it left behind.
 
 If a game makes me pause, I will leave a page for it.

@@ -18,8 +18,8 @@ export const articles: Article[] = [
       { zh: "沉浸", en: "Immersion" }
     ],
     summary: {
-      zh: "不是评测，也不是攻略，只是记录那些让我停下来想一想的游戏时刻。",
-      en: "Not a review or a guide, just notes on the game moments that make me pause."
+      zh: "不是评测，也不是攻略，只是记录那些让我记很久的游戏时刻。",
+      en: "Not a review or a guide, just notes on the game moments that stay with me."
     },
     readingTime: {
       zh: "3 分钟阅读",
