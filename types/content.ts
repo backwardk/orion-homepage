@@ -14,7 +14,7 @@ export type Article = {
 
 export type Interest = {
   label: LocalizedText;
-  icon: "book" | "map" | "code" | "camera" | "pen" | "palette" | "music";
+  icon: "book" | "map" | "code" | "camera" | "pen" | "palette" | "music" | "game";
 };
 
 export type LikeItem = {

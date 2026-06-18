@@ -2,6 +2,7 @@ import {
   BookOpen,
   Camera,
   Code2,
+  Gamepad2,
   Github,
   Instagram,
   Mail,
@@ -35,6 +36,8 @@ export function InterestIcon({ icon, className }: { icon: Interest["icon"]; clas
       return <Palette {...props} />;
     case "music":
       return <Music2 {...props} />;
+    case "game":
+      return <Gamepad2 {...props} />;
   }
 }
 
