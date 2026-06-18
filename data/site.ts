@@ -75,6 +75,13 @@ export const siteCopy = {
           zh: "用短随笔、项目记录和定期整理，让注意力更多回到真正重要的事情上。",
           en: "Using short notes, project records, and regular cleanup to return attention to what matters."
         }
+      },
+      {
+        title: { zh: "最近在玩：一些单机游戏", en: "Recently playing: a few single-player games" },
+        body: {
+          zh: "记录其中的叙事、氛围和让我停下来的细节，不急着评价，只先保存感受。",
+          en: "Noting their storytelling, atmosphere, and quiet details without rushing to turn them into reviews."
+        }
       }
     ]
   },

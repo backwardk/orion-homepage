@@ -48,5 +48,13 @@ export const likes: LikeItem[] = [
       zh: "喜欢能陪伴阅读、写作和夜晚整理思绪的音乐。",
       en: "I like music that can sit beside reading, writing, and quiet night thoughts."
     }
+  },
+  {
+    category: { zh: "游戏", en: "Games" },
+    title: { zh: "单机游戏", en: "Single-player Games" },
+    description: {
+      zh: "喜欢沉浸式的单机体验，也会记录那些让我停下来思考的叙事、氛围和细节。",
+      en: "I enjoy immersive single-player experiences, and note the stories, atmosphere, and details that make me pause."
+    }
   }
 ];

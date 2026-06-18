@@ -52,6 +52,7 @@ data/
   articles.ts
   contact.ts
   interests.ts
+  likes.ts
   quotes.ts
   site.ts
   site-config.ts
@@ -109,6 +110,8 @@ npm.cmd run build
 `Now / 最近在做什么` 也在 `data/site.ts` 中维护，适合更新正在学习、最近阅读和正在保持的习惯。
 
 `Likes / 喜欢的事物` 在 `data/likes.ts` 中维护，适合放书、工具、音乐、城市和设计偏好等低成本长期内容。
+
+如果想记录单机游戏感想，可以在 `data/likes.ts` 维护“单机游戏”偏好，在 `data/site.ts` 的 `now` 更新最近状态，并按下方方式新增一篇 `游戏手记 / Play Notes` 文章。
 
 ## 新增文章
 

@@ -2,6 +2,31 @@ import type { Article } from "@/types/content";
 
 export const articles: Article[] = [
   {
+    slug: "single-player-games",
+    title: {
+      zh: "为什么我依然喜欢单机游戏",
+      en: "Why I Still Love Single-Player Games"
+    },
+    publishedAt: "2026-06-18",
+    category: {
+      zh: "游戏手记",
+      en: "Play Notes"
+    },
+    tags: [
+      { zh: "单机游戏", en: "Single-player Games" },
+      { zh: "叙事", en: "Storytelling" },
+      { zh: "沉浸", en: "Immersion" }
+    ],
+    summary: {
+      zh: "不是评测，也不是攻略，只是记录那些让我停下来想一想的游戏时刻。",
+      en: "Not a review or a guide, just notes on the game moments that make me pause."
+    },
+    readingTime: {
+      zh: "3 分钟阅读",
+      en: "3 min read"
+    }
+  },
+  {
     slug: "long-term-learning",
     title: {
       zh: "如何保持长期学习的动力",
