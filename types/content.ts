@@ -4,6 +4,7 @@ export type LocalizedText = Record<Language, string>;
 
 export type Article = {
   slug: string;
+  channel: "main" | "side-b";
   title: LocalizedText;
   publishedAt: string;
   category: LocalizedText;
@@ -22,6 +23,18 @@ export type LikeItem = {
   title: LocalizedText;
   category: LocalizedText;
   description: LocalizedText;
+};
+
+export type MediaEntry = {
+  id: string;
+  type: "game" | "anime";
+  title: LocalizedText;
+  status: LocalizedText;
+  progress: LocalizedText;
+  note: LocalizedText;
+  image: string;
+  year?: string;
+  score?: string;
 };
 
 export type Quote = {

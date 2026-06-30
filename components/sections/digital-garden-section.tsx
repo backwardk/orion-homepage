@@ -10,6 +10,7 @@ import { useLanguage } from "@/components/language-provider";
 
 export function DigitalGardenSection() {
   const { language, t } = useLanguage();
+  const mainArticles = articles.filter((article) => article.channel === "main");
 
   return (
     <section id="garden" className="px-5 py-24 sm:px-8 sm:py-32" aria-labelledby="garden-title">
@@ -26,7 +27,7 @@ export function DigitalGardenSection() {
         </Reveal>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {articles.map((article, index) => (
+          {mainArticles.map((article, index) => (
             <Reveal key={article.slug} delay={index * 0.06}>
               <Link
                 href={`/garden/${article.slug}`}

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
+import { sideBCopy } from "@/data/side-b";
 import { siteCopy } from "@/data/site";
 import { formatDate } from "@/lib/format-date";
 import { renderMarkdown } from "@/lib/markdown";
@@ -10,16 +11,20 @@ import { useLanguage } from "@/components/language-provider";
 
 export function ArticlePageContent({ article }: { article: ArticleWithContent }) {
   const { language, t } = useLanguage();
+  const backLink =
+    article.channel === "side-b"
+      ? { href: "/side-b/#notes", label: sideBCopy.notes.back }
+      : { href: "/#garden", label: siteCopy.garden.backHome };
 
   return (
     <article className="px-5 pb-28 pt-28 sm:px-8 sm:pt-36">
       <div className="mx-auto max-w-3xl">
         <Link
-          href="/#garden"
+          href={backLink.href}
           className="inline-flex items-center gap-2 text-sm font-medium text-muted transition hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
         >
           <ArrowLeftIcon className="size-4" aria-hidden="true" />
-          {t(siteCopy.garden.backHome)}
+          {t(backLink.label)}
         </Link>
 
         <header className="mt-10 border-b border-line pb-10">

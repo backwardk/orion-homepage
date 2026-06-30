@@ -3,6 +3,7 @@ import type { Article } from "@/types/content";
 export const articles: Article[] = [
   {
     slug: "single-player-games",
+    channel: "side-b",
     title: {
       zh: "为什么我依然喜欢单机游戏",
       en: "Why I Still Love Single-Player Games"
@@ -28,6 +29,7 @@ export const articles: Article[] = [
   },
   {
     slug: "long-term-learning",
+    channel: "main",
     title: {
       zh: "如何保持长期学习的动力",
       en: "How to Keep Learning Over Time"
@@ -53,6 +55,7 @@ export const articles: Article[] = [
   },
   {
     slug: "tokyo-walk",
+    channel: "main",
     title: {
       zh: "东京散步记录",
       en: "Walking Notes from Tokyo"
@@ -78,6 +81,7 @@ export const articles: Article[] = [
   },
   {
     slug: "minimalism-thinking",
+    channel: "main",
     title: {
       zh: "关于极简主义的一些思考",
       en: "A Few Thoughts on Minimalism"

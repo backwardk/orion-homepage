@@ -75,3 +75,61 @@ body {
   opacity: 0.025;
   mix-blend-mode: screen;
 }
+
+.side-b-shell {
+  --side-bg: 244 241 232;
+  --side-paper: 253 249 237;
+  --side-ink: 27 29 32;
+  --side-muted: 93 91 86;
+  --side-line: 47 49 51;
+  --side-coral: 220 103 85;
+  --side-teal: 60 128 126;
+  --side-yellow: 218 168 70;
+  --color-background: var(--side-bg);
+  --color-foreground: var(--side-ink);
+  --color-muted: var(--side-muted);
+  --color-accent: var(--side-coral);
+  --color-surface: var(--side-paper);
+  --color-line: 194 187 172;
+  background: rgb(var(--side-bg));
+  color: rgb(var(--side-ink));
+}
+
+.dark .side-b-shell {
+  --side-bg: 20 20 22;
+  --side-paper: 29 29 31;
+  --side-ink: 241 236 222;
+  --side-muted: 176 170 158;
+  --side-line: 214 205 187;
+  --side-coral: 240 126 103;
+  --side-teal: 103 180 174;
+  --side-yellow: 234 190 101;
+  --color-line: 74 72 68;
+}
+
+.side-b-grid {
+  background-image:
+    linear-gradient(rgb(var(--side-line) / 0.065) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--side-line) / 0.065) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.side-b-status-dot {
+  animation: side-b-signal 1.8s steps(2, end) infinite;
+}
+
+.dark .side-b-shell img {
+  filter: brightness(0.84) contrast(1.05);
+}
+
+@keyframes side-b-signal {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  46%,
+  100% {
+    opacity: 0.35;
+  }
+}

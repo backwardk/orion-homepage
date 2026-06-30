@@ -17,7 +17,9 @@
 - 响应式首页，适配手机、平板、桌面
 - 浅色 / 深色模式切换
 - 中文 / 英文切换
+- Home / Side B 双频道切换
 - Hero、关于、最近在做什么、兴趣、数字花园、今日一句、联系区
+- Side B 二次元与游戏频道，包含当前状态、偏好收藏和游戏手记
 - 今日一句在两条内容之间随刷新轮换
 - 本地 Markdown 文章详情页
 - sitemap、robots、Open Graph 图片、404 页面
@@ -28,6 +30,7 @@
 ```txt
 app/
   garden/[slug]/page.tsx
+  side-b/page.tsx
   globals.css
   layout.tsx
   not-found.tsx
@@ -45,6 +48,7 @@ components/
   personal-mark.tsx
   providers.tsx
   site-header.tsx
+  side-b-page.tsx
   theme-toggle.tsx
 content/
   articles/
@@ -56,6 +60,7 @@ data/
   quotes.ts
   site.ts
   site-config.ts
+  side-b.ts
 lib/
   articles.ts
   format-date.ts
@@ -65,6 +70,7 @@ types/
   content.ts
 public/
   og-image.svg
+  side-b/
 ```
 
 ## 本地运行
@@ -142,6 +148,7 @@ npm.cmd run build
    ```ts
    {
      slug: "my-new-note",
+     channel: "main",
      title: { zh: "中文标题", en: "English Title" },
      publishedAt: "2026-06-18",
      category: { zh: "分类", en: "Category" },
@@ -152,6 +159,20 @@ npm.cmd run build
    ```
 
 4. 访问 `/garden/my-new-note/` 检查文章页。
+
+`channel` 使用：
+
+- `main`：显示在首页数字花园
+- `side-b`：显示在 Side B 的 Play Notes
+
+## 维护 Side B
+
+- 页面文字、当前游玩 / 追番状态和偏好收藏集中在 `data/side-b.ts`
+- Side B 文章使用 `channel: "side-b"`
+- 手绘图片放在 `public/side-b/`
+- 当前图片文件为 `hero.webp`、`anime.webp`、`games.webp` 和 `notes.webp`
+- 替换图片时保持相同文件名即可，不需要修改组件
+- 图片使用原创黑白钢笔手绘风格，不放现有动漫、游戏角色或品牌 Logo
 
 ## GitHub Pages 部署
 
