@@ -5,7 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LanguageToggle } from "@/components/language-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { sideBCopy } from "@/data/side-b";
+import { animeCopy } from "@/data/anime";
+import { gamesCopy } from "@/data/games";
 import { siteCopy } from "@/data/site";
 import { useLanguage } from "@/components/language-provider";
 
@@ -16,28 +17,45 @@ const mainLinks = [
   { href: "/#contact", sectionId: "contact", label: siteCopy.nav.contact }
 ];
 
-const sideBLinks = [
-  { href: "/side-b/#now", sectionId: "now", label: sideBCopy.nav.now },
-  { href: "/side-b/#favorites", sectionId: "favorites", label: sideBCopy.nav.favorites },
-  { href: "/side-b/#notes", sectionId: "notes", label: sideBCopy.nav.notes }
+const gamesLinks = [
+  { href: "/games/#archive", sectionId: "archive", label: gamesCopy.nav.archive },
+  { href: "/games/#favorites", sectionId: "favorites", label: gamesCopy.nav.favorites },
+  { href: "/games/#notes", sectionId: "notes", label: gamesCopy.nav.notes }
 ];
 
+const animeLinks = [
+  { href: "/anime/#now", sectionId: "now", label: animeCopy.nav.now },
+  { href: "/anime/#favorites", sectionId: "favorites", label: animeCopy.nav.favorites },
+  { href: "/anime/#notes", sectionId: "notes", label: animeCopy.nav.notes }
+];
+
+export type SiteMode = "main" | "games" | "anime" | "hub";
+
 type SiteHeaderProps = {
-  mode?: "main" | "side-b";
+  mode?: SiteMode;
 };
+
+const tabs = [
+  { mode: "main" as const, href: "/", label: "Home" },
+  { mode: "games" as const, href: "/games/", label: "Games" },
+  { mode: "anime" as const, href: "/anime/", label: "Anime" }
+];
 
 export function SiteHeader({ mode }: SiteHeaderProps) {
   const { t } = useLanguage();
   const pathname = usePathname();
-  const isSideB = mode ? mode === "side-b" : pathname.includes("/side-b");
-  const links = isSideB ? sideBLinks : mainLinks;
-  const [activeId, setActiveId] = useState(isSideB ? "side-home" : "home");
+  const currentMode = mode ?? getModeFromPath(pathname);
+  const links = currentMode === "games" ? gamesLinks : currentMode === "anime" ? animeLinks : currentMode === "main" ? mainLinks : [];
+  const sectionIds = currentMode === "games"
+    ? ["games-home", "archive", "favorites", "notes"]
+    : currentMode === "anime"
+      ? ["anime-home", "now", "favorites", "notes"]
+      : currentMode === "main"
+        ? ["home", "about", "now", "garden", "contact"]
+        : ["side-home"];
+  const [activeId, setActiveId] = useState(sectionIds[0]);
 
   useEffect(() => {
-    const sectionIds = isSideB
-      ? ["side-home", "now", "favorites", "notes"]
-      : ["home", "about", "now", "garden", "contact"];
-
     setActiveId(sectionIds[0]);
 
     const sections = sectionIds
@@ -58,83 +76,60 @@ export function SiteHeader({ mode }: SiteHeaderProps) {
     );
 
     sections.forEach((section) => observer.observe(section));
-
     return () => observer.disconnect();
-  }, [isSideB]);
+  }, [currentMode]);
 
   return (
-    <header
-      className={`fixed left-0 right-0 top-0 z-40 border-b backdrop-blur-xl ${
-        isSideB
-          ? "border-side-line/70 bg-side-bg/90 text-side-ink"
-          : "border-line/50 bg-background/78 text-foreground"
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <Link
-          href="/#home"
-          className={`text-sm font-semibold transition ${
-            isSideB ? "hover:text-side-coral" : "hover:text-accent"
-          }`}
-        >
+    <header className="fixed left-0 right-0 top-0 z-40 border-b border-line/60 bg-background/90 text-foreground backdrop-blur-xl">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-8">
+        <Link href="/#home" className="text-sm font-semibold transition hover:text-accent">
           <span className="hidden sm:inline">Orion Jiang</span>
           <span className="sm:hidden">OJ</span>
         </Link>
         <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-          <nav
-            aria-label="Site mode"
-            className={`grid w-[116px] grid-cols-2 border p-0.5 text-center ${
-              isSideB ? "border-side-line bg-side-paper/60" : "border-line bg-surface/60"
-            }`}
-          >
-            <Link
-              href="/"
-              aria-current={!isSideB ? "page" : undefined}
-              className={`px-2 py-1.5 text-[11px] font-semibold uppercase transition ${
-                !isSideB
-                  ? "bg-foreground text-background"
-                  : "text-side-muted hover:bg-side-teal/15 hover:text-side-ink"
-              }`}
-            >
-              Home
-            </Link>
-            <Link
-              href="/side-b/"
-              aria-current={isSideB ? "page" : undefined}
-              className={`px-2 py-1.5 text-[11px] font-semibold uppercase transition ${
-                isSideB
-                  ? "bg-side-ink text-side-paper"
-                  : "text-muted hover:bg-accent/10 hover:text-foreground"
-              }`}
-            >
-              Side B
-            </Link>
+          <nav aria-label="Site channels" className="grid w-[174px] grid-cols-3 border border-line bg-surface/60 p-0.5 text-center">
+            {tabs.map((tab) => {
+              const selected = currentMode === tab.mode;
+              return (
+                <Link
+                  key={tab.mode}
+                  href={tab.href}
+                  aria-current={selected ? "page" : undefined}
+                  className={`px-1 py-1.5 text-[10px] font-semibold uppercase transition sm:text-[11px] ${
+                    selected ? "bg-foreground text-background" : "text-muted hover:bg-accent/10 hover:text-foreground"
+                  }`}
+                >
+                  {tab.label}
+                </Link>
+              );
+            })}
           </nav>
-          <nav aria-label="Primary navigation" className="hidden items-center gap-6 xl:flex">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm transition ${
-                  isSideB ? "hover:text-side-ink" : "hover:text-foreground"
-                } ${
-                  activeId === link.sectionId
-                    ? isSideB
-                      ? "text-side-coral"
-                      : "text-accent"
-                    : isSideB
-                      ? "text-side-muted"
-                      : "text-muted"
-                }`}
-              >
-                {t(link.label)}
-              </Link>
-            ))}
-          </nav>
+          {links.length > 0 && (
+            <nav aria-label="Primary navigation" className="hidden items-center gap-6 xl:flex">
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm transition hover:text-foreground ${
+                    activeId === link.sectionId ? "text-accent" : "text-muted"
+                  }`}
+                >
+                  {t(link.label)}
+                </Link>
+              ))}
+            </nav>
+          )}
           <LanguageToggle />
           <ThemeToggle />
         </div>
       </div>
     </header>
   );
+}
+
+function getModeFromPath(pathname: string): SiteMode {
+  if (pathname.includes("/games")) return "games";
+  if (pathname.includes("/anime")) return "anime";
+  if (pathname.includes("/side-b")) return "hub";
+  return "main";
 }

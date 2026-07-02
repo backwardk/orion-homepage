@@ -3,7 +3,7 @@ import type { Article } from "@/types/content";
 export const articles: Article[] = [
   {
     slug: "single-player-games",
-    channel: "side-b",
+    channel: "games",
     title: {
       zh: "为什么我依然喜欢单机游戏",
       en: "Why I Still Love Single-Player Games"

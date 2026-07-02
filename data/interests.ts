@@ -8,5 +8,5 @@ export const interests: Interest[] = [
   { label: { zh: "写作", en: "Writing" }, icon: "pen" },
   { label: { zh: "设计", en: "Design" }, icon: "palette" },
   { label: { zh: "音乐", en: "Music" }, icon: "music" },
-  { label: { zh: "游戏", en: "Games" }, icon: "game", href: "/side-b" }
+  { label: { zh: "游戏", en: "Games" }, icon: "game", href: "/games" }
 ];

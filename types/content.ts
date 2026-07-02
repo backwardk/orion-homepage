@@ -4,7 +4,7 @@ export type LocalizedText = Record<Language, string>;
 
 export type Article = {
   slug: string;
-  channel: "main" | "side-b";
+  channel: "main" | "games" | "anime";
   title: LocalizedText;
   publishedAt: string;
   category: LocalizedText;
@@ -35,6 +35,15 @@ export type MediaEntry = {
   image: string;
   year?: string;
   score?: string;
+};
+
+export type SteamGameEntry = {
+  appId: number;
+  title: string;
+  playtimeHours: number;
+  lastPlayed?: string;
+  coverImage?: string;
+  note?: LocalizedText;
 };
 
 export type Quote = {

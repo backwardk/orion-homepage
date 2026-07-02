@@ -61,7 +61,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   return (
     <main
       className={`min-h-screen bg-background text-foreground ${
-        article.channel === "side-b" ? "side-b-shell" : ""
+        article.channel === "games" ? "games-shell" : article.channel === "anime" ? "anime-shell" : ""
       }`}
     >
       <SiteHeader mode={article.channel} />

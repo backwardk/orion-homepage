@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
-import { sideBCopy } from "@/data/side-b";
+import { animeCopy } from "@/data/anime";
+import { gamesCopy } from "@/data/games";
 import { siteCopy } from "@/data/site";
 import { formatDate } from "@/lib/format-date";
 import { renderMarkdown } from "@/lib/markdown";
@@ -11,10 +12,11 @@ import { useLanguage } from "@/components/language-provider";
 
 export function ArticlePageContent({ article }: { article: ArticleWithContent }) {
   const { language, t } = useLanguage();
-  const backLink =
-    article.channel === "side-b"
-      ? { href: "/side-b/#notes", label: sideBCopy.notes.back }
-      : { href: "/#garden", label: siteCopy.garden.backHome };
+  const backLink = {
+    main: { href: "/#garden", label: siteCopy.garden.backHome },
+    games: { href: "/games/#notes", label: gamesCopy.notes.back },
+    anime: { href: "/anime/#notes", label: animeCopy.notes.back }
+  }[article.channel];
 
   return (
     <article className="px-5 pb-28 pt-28 sm:px-8 sm:pt-36">

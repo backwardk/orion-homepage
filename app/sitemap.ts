@@ -6,7 +6,8 @@ export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const mainLastModified = articles.find((article) => article.channel === "main")?.publishedAt ?? "2026-06-18";
-  const sideBLastModified = articles.find((article) => article.channel === "side-b")?.publishedAt ?? "2026-06-18";
+  const gamesLastModified = articles.find((article) => article.channel === "games")?.publishedAt ?? "2026-06-18";
+  const animeLastModified = articles.find((article) => article.channel === "anime")?.publishedAt ?? "2026-07-01";
   const articleEntries = articles.map((article) => ({
     url: `${siteConfig.siteUrl}/garden/${article.slug}/`,
     lastModified: article.publishedAt,
@@ -18,14 +19,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${siteConfig.siteUrl}/`,
       lastModified: mainLastModified,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 1
     },
     {
+      url: `${siteConfig.siteUrl}/games/`,
+      lastModified: gamesLastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.9
+    },
+    {
+      url: `${siteConfig.siteUrl}/anime/`,
+      lastModified: animeLastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.9
+    },
+    {
       url: `${siteConfig.siteUrl}/side-b/`,
-      lastModified: sideBLastModified,
-      changeFrequency: "monthly",
-      priority: 0.8
+      lastModified: gamesLastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.6
     },
     ...articleEntries
   ];

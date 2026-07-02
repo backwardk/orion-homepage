@@ -133,3 +133,117 @@ body {
     opacity: 0.35;
   }
 }
+
+.games-shell {
+  --color-background: 14 17 19;
+  --color-foreground: 238 239 232;
+  --color-muted: 158 165 160;
+  --color-accent: 78 198 185;
+  --color-surface: 23 28 30;
+  --color-line: 62 72 73;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+.dark .games-shell {
+  --color-background: 9 11 13;
+  --color-surface: 18 22 24;
+  --color-accent: 101 222 207;
+}
+
+.game-grid {
+  background-image:
+    linear-gradient(rgb(var(--color-line) / 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--color-line) / 0.16) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.anime-shell {
+  --color-background: 252 249 244;
+  --color-foreground: 36 35 38;
+  --color-muted: 111 104 105;
+  --color-accent: 224 101 112;
+  --color-surface: 255 253 249;
+  --color-line: 220 210 204;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+.dark .anime-shell {
+  --color-background: 26 24 28;
+  --color-foreground: 246 239 235;
+  --color-muted: 186 174 174;
+  --color-accent: 244 129 139;
+  --color-surface: 35 32 37;
+  --color-line: 78 69 74;
+}
+
+.anime-dots {
+  background-image: radial-gradient(circle, rgb(var(--color-accent) / 0.13) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.text-game-gold {
+  color: rgb(244 202 112);
+}
+
+.game-cover-shelf {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: end;
+  gap: 0.75rem;
+}
+
+.game-cover-item {
+  min-width: 0;
+}
+
+.anime-hero-panel img,
+.anime-frame-tall img,
+.anime-shell #notes img {
+  filter: grayscale(1) contrast(1.05);
+}
+
+.anime-frame-tall {
+  min-height: 32rem;
+}
+
+.anime-like-grid > div {
+  border-bottom: 1px solid rgb(var(--color-foreground));
+  border-right: 1px solid rgb(var(--color-foreground));
+}
+
+.anime-like-grid > div:nth-child(2n) {
+  border-right: 0;
+}
+
+.anime-like-grid > div:nth-child(n + 3) {
+  border-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+  .anime-like-grid > div {
+    border-bottom: 0;
+  }
+
+  .anime-like-grid > div:nth-child(2) {
+    border-right: 1px solid rgb(var(--color-foreground));
+  }
+
+  .anime-like-grid > div:last-child {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .game-cover-shelf {
+    gap: 0.4rem;
+  }
+
+  .game-cover-item p {
+    display: none;
+  }
+
+  .anime-frame-tall {
+    min-height: 25rem;
+  }
+}
