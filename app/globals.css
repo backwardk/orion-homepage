@@ -135,20 +135,22 @@ body {
 }
 
 .games-shell {
-  --color-background: 14 17 19;
-  --color-foreground: 238 239 232;
-  --color-muted: 158 165 160;
-  --color-accent: 78 198 185;
-  --color-surface: 23 28 30;
-  --color-line: 62 72 73;
+  --color-background: 45 55 57;
+  --color-foreground: 247 248 242;
+  --color-muted: 194 203 198;
+  --color-accent: 100 218 202;
+  --color-surface: 61 72 74;
+  --color-line: 101 117 116;
   background: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
 }
 
 .dark .games-shell {
-  --color-background: 9 11 13;
-  --color-surface: 18 22 24;
-  --color-accent: 101 222 207;
+  --color-background: 25 31 33;
+  --color-muted: 177 188 182;
+  --color-surface: 39 47 49;
+  --color-line: 75 88 88;
+  --color-accent: 108 226 210;
 }
 
 .game-grid {
@@ -193,8 +195,57 @@ body {
   gap: 0.75rem;
 }
 
+.game-library-menu {
+  min-width: 0;
+}
+
 .game-cover-item {
   min-width: 0;
+  opacity: 0.74;
+  scale: 1;
+  transition: opacity 180ms ease, scale 180ms ease;
+}
+
+.game-cover-item:hover,
+.game-cover-item:focus-visible,
+.game-cover-item.is-active {
+  opacity: 1;
+  scale: 1.02;
+}
+
+.game-cover-selection {
+  position: absolute;
+  inset: auto 0 0;
+  height: 4px;
+  background: rgb(var(--color-accent));
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.game-cover-item.is-active .game-cover-selection {
+  opacity: 1;
+}
+
+.game-cover-detail {
+  min-height: 12rem;
+  margin-top: 1.25rem;
+  border: 1px solid rgb(var(--color-line));
+  background: rgb(var(--color-surface) / 0.96);
+  padding: 1.25rem;
+  box-shadow: 0 18px 48px rgb(10 20 21 / 0.16);
+  animation: game-detail-in 180ms ease both;
+}
+
+@keyframes game-detail-in {
+  from {
+    opacity: 0.72;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .anime-hero-panel img,

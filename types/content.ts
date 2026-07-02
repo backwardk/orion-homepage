@@ -43,6 +43,8 @@ export type SteamGameEntry = {
   playtimeHours: number;
   lastPlayed?: string;
   coverImage?: string;
+  features?: LocalizedText[];
+  detail?: LocalizedText;
   note?: LocalizedText;
 };
 

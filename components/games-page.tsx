@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ExternalLink, Gamepad2 } from "lucide-react";
@@ -19,6 +20,8 @@ export function GamesPage() {
   const { language, t } = useLanguage();
   const gameArticles = articles.filter((article) => article.channel === "games");
   const coverGames = steamGames.filter((game) => game.coverImage).slice(0, 5);
+  const [activeGameId, setActiveGameId] = useState(coverGames[0]?.appId ?? 0);
+  const activeGame = coverGames.find((game) => game.appId === activeGameId) ?? coverGames[0];
   const maxHours = Math.max(...steamGames.map((game) => game.playtimeHours), 1);
 
   return (
@@ -39,15 +42,50 @@ export function GamesPage() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="game-cover-shelf" aria-label={language === "zh" ? "Steam 游戏封面" : "Steam game covers"}>
-              {coverGames.map((game, index) => (
-                <article key={game.appId} className="game-cover-item" style={{ translate: index === 0 ? "0 -18px" : index === 2 ? "0 -8px" : undefined }}>
-                  <div className="relative aspect-[2/3] overflow-hidden border border-line bg-surface">
-                    <Image src={assetPath(game.coverImage!)} alt={game.title} fill sizes="(min-width: 1024px) 140px, 20vw" className="object-cover" />
+            <div className="game-library-menu">
+              <div className="game-cover-shelf" aria-label={language === "zh" ? "Steam 游戏封面" : "Steam game covers"}>
+                {coverGames.map((game, index) => {
+                  const selected = activeGame?.appId === game.appId;
+                  return (
+                    <button
+                      key={game.appId}
+                      type="button"
+                      aria-expanded={selected}
+                      aria-controls="game-cover-detail"
+                      onMouseEnter={() => setActiveGameId(game.appId)}
+                      onFocus={() => setActiveGameId(game.appId)}
+                      onClick={() => setActiveGameId(game.appId)}
+                      className={`game-cover-item group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${selected ? "is-active" : ""}`}
+                      style={{ translate: index === 0 ? "0 -18px" : index === 2 ? "0 -8px" : undefined }}
+                    >
+                      <span className="relative block aspect-[2/3] overflow-hidden border border-line bg-surface">
+                        <Image src={assetPath(game.coverImage!)} alt="" fill sizes="(min-width: 1024px) 140px, 20vw" className="object-cover transition duration-300 group-hover:scale-[1.03]" />
+                        <span className="game-cover-selection" aria-hidden="true" />
+                      </span>
+                      <span className="mt-2 block truncate text-[11px] text-muted">{game.title}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {activeGame ? (
+                <article key={activeGame.appId} id="game-cover-detail" className="game-cover-detail" aria-live="polite">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="font-mono text-[10px] uppercase text-accent">{t(gamesCopy.coverMenu.hint)}</p>
+                      <h2 className="mt-2 text-xl font-black sm:text-2xl">{activeGame.title}</h2>
+                    </div>
+                    <div className="shrink-0 text-right">
+                      <span className="block text-[10px] uppercase text-muted">{t(gamesCopy.coverMenu.playtime)}</span>
+                      <strong className="mt-1 block font-mono text-sm text-game-gold">{activeGame.playtimeHours.toLocaleString()} h</strong>
+                    </div>
                   </div>
-                  <p className="mt-2 truncate text-[11px] text-muted">{game.title}</p>
+                  <p className="mt-4 text-sm leading-7 text-foreground/90">{activeGame.detail ? t(activeGame.detail) : ""}</p>
+                  <div className="mt-4 flex flex-wrap gap-2" aria-label={t(gamesCopy.coverMenu.features)}>
+                    {activeGame.features?.map((feature) => <span key={feature.zh} className="border border-line bg-background/55 px-2.5 py-1 font-mono text-[10px] text-muted">{t(feature)}</span>)}
+                  </div>
                 </article>
-              ))}
+              ) : null}
             </div>
           </Reveal>
         </div>

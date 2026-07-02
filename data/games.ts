@@ -17,6 +17,11 @@ export const gamesCopy = {
     archive: { zh: "查看游玩档案", en: "Open archive" },
     notes: { zh: "阅读游戏手记", en: "Read game notes" }
   },
+  coverMenu: {
+    hint: { zh: "移入或点击封面查看详情", en: "Hover or select a cover for details" },
+    features: { zh: "游戏特点", en: "Key traits" },
+    playtime: { zh: "游玩时长", en: "Playtime" }
+  },
   archive: {
     index: "01",
     title: { zh: "Steam 游玩档案", en: "Steam Playtime Archive" },
@@ -109,12 +114,52 @@ export const steamStats = {
 } as const;
 
 export const steamGames: SteamGameEntry[] = [
-  { appId: 730, title: "Counter-Strike 2", playtimeHours: 1108.8, lastPlayed: "2026-06-30", coverImage: "/games/covers/counter-strike-2.jpg" },
-  { appId: 1172470, title: "Apex Legends", playtimeHours: 672.8, lastPlayed: "2026-06-11", coverImage: "/games/covers/apex-legends.jpg" },
-  { appId: 3932890, title: "Escape from Tarkov", playtimeHours: 206.7, lastPlayed: "2026-06-12", coverImage: "/games/covers/escape-from-tarkov.jpg" },
-  { appId: 289070, title: "Sid Meier's Civilization VI", playtimeHours: 144.9, lastPlayed: "2025-06-03", coverImage: "/games/covers/civilization-vi.jpg" },
+  {
+    appId: 730,
+    title: "Counter-Strike 2",
+    playtimeHours: 1108.8,
+    lastPlayed: "2026-06-30",
+    coverImage: "/games/covers/counter-strike-2.jpg",
+    features: [{ zh: "竞技对抗", en: "Competitive" }, { zh: "战术配合", en: "Tactical" }, { zh: "精准枪感", en: "Precision" }],
+    detail: { zh: "规则直接，但每一局都由站位、经济和临场判断重新塑造。它适合短时间进入，也值得长期练习。", en: "Direct rules, reshaped every round by positioning, economy, and split-second decisions. Easy to enter, difficult to master." }
+  },
+  {
+    appId: 1172470,
+    title: "Apex Legends",
+    playtimeHours: 672.8,
+    lastPlayed: "2026-06-11",
+    coverImage: "/games/covers/apex-legends.jpg",
+    features: [{ zh: "高速移动", en: "Movement" }, { zh: "小队协作", en: "Squad play" }, { zh: "英雄能力", en: "Legends" }],
+    detail: { zh: "流畅移动与英雄能力让交战更有层次，小队之间的沟通和临场配合往往比单次击杀更重要。", en: "Fluid movement and character abilities add layers to every fight, where communication and adaptation matter as much as aim." }
+  },
+  {
+    appId: 3932890,
+    title: "Escape from Tarkov",
+    playtimeHours: 206.7,
+    lastPlayed: "2026-06-12",
+    coverImage: "/games/covers/escape-from-tarkov.jpg",
+    features: [{ zh: "高风险撤离", en: "High risk" }, { zh: "物资管理", en: "Loot" }, { zh: "硬核拟真", en: "Simulation" }],
+    detail: { zh: "进入、搜寻和撤离构成持续紧张的循环。装备会失去，因此每一个声音和路线选择都更有分量。", en: "Enter, search, and extract through a tense loop where gear can be lost, giving every sound and route real weight." }
+  },
+  {
+    appId: 289070,
+    title: "Sid Meier's Civilization VI",
+    playtimeHours: 144.9,
+    lastPlayed: "2025-06-03",
+    coverImage: "/games/covers/civilization-vi.jpg",
+    features: [{ zh: "回合策略", en: "Turn-based" }, { zh: "文明经营", en: "Empire building" }, { zh: "多线选择", en: "Many paths" }],
+    detail: { zh: "从一座城市开始，把科技、文化、外交和战争串成漫长决策链，常常让人想再进行一个回合。", en: "Starting from one city, science, culture, diplomacy, and war become a long chain of choices that invites one more turn." }
+  },
   { appId: 1238810, title: "《战地风云 5》", playtimeHours: 140.5, lastPlayed: "2023-11-30" },
-  { appId: 1086940, title: "博德之门3", playtimeHours: 108.7, lastPlayed: "2025-11-28", coverImage: "/games/covers/baldurs-gate-3.jpg" },
+  {
+    appId: 1086940,
+    title: "博德之门3",
+    playtimeHours: 108.7,
+    lastPlayed: "2025-11-28",
+    coverImage: "/games/covers/baldurs-gate-3.jpg",
+    features: [{ zh: "角色扮演", en: "Role-playing" }, { zh: "分支叙事", en: "Choices" }, { zh: "团队冒险", en: "Party" }],
+    detail: { zh: "角色、选择和掷骰共同推动旅程。很多决定没有标准答案，却会留下足够鲜明的个人故事。", en: "Characters, choices, and dice rolls move the journey forward, turning uncertain decisions into distinctly personal stories." }
+  },
   { appId: 1468810, title: "鬼谷八荒", playtimeHours: 105.8, lastPlayed: "2026-02-27" },
   { appId: 457140, title: "缺氧", playtimeHours: 98, lastPlayed: "2026-06-16" },
   { appId: 275850, title: "No Man's Sky 无人深空", playtimeHours: 80.9, lastPlayed: "2025-03-17" },
