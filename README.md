@@ -237,7 +237,8 @@ Vercel 可以直接导入仓库：
 
 ## 维护 Games 与 Anime
 
-- Steam 前十时长排行和汇总统计在 `data/games.ts`
+- 单机书架通过 `data/games.ts` 的 `singlePlayerOrder` 控制顺序，游戏特点和简介也集中在同一文件
+- Steam 前十时长排行和汇总统计在 `data/games.ts`，页面默认只展示前三，其余折叠
 - Steam 数据只保存 AppID、游戏名、时长和最后游玩日期
 - Games 页面使用 `channel: "games"` 的 Markdown 文章
 - Anime 页面使用 `channel: "anime"` 的 Markdown 文章

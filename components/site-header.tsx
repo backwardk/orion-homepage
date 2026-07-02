@@ -18,9 +18,9 @@ const mainLinks = [
 ];
 
 const gamesLinks = [
-  { href: "/games/#archive", sectionId: "archive", label: gamesCopy.nav.archive },
+  { href: "/games/#notes", sectionId: "notes", label: gamesCopy.nav.notes },
   { href: "/games/#favorites", sectionId: "favorites", label: gamesCopy.nav.favorites },
-  { href: "/games/#notes", sectionId: "notes", label: gamesCopy.nav.notes }
+  { href: "/games/#archive", sectionId: "archive", label: gamesCopy.nav.archive }
 ];
 
 const animeLinks = [
