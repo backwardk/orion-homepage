@@ -48,6 +48,18 @@ export type SteamGameEntry = {
   note?: LocalizedText;
 };
 
+export type GameCartridge = {
+  id: string;
+  appId: number;
+  title: string;
+  coverImage: string;
+  genre: LocalizedText;
+  playtimeHours: number;
+  features: LocalizedText[];
+  memory: LocalizedText;
+  accent: "teal" | "coral" | "yellow";
+};
+
 export type Quote = {
   text: string;
   author?: string;

@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { LanguageToggle } from "@/components/language-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { animeCopy } from "@/data/anime";
-import { gamesCopy } from "@/data/games";
 import { siteCopy } from "@/data/site";
 import { useLanguage } from "@/components/language-provider";
 
@@ -17,15 +16,12 @@ const mainLinks = [
   { href: "/#contact", sectionId: "contact", label: siteCopy.nav.contact }
 ];
 
-const gamesLinks = [
-  { href: "/games/#notes", sectionId: "notes", label: gamesCopy.nav.notes },
-  { href: "/games/#favorites", sectionId: "favorites", label: gamesCopy.nav.favorites },
-  { href: "/games/#archive", sectionId: "archive", label: gamesCopy.nav.archive }
-];
+const gamesLinks: typeof mainLinks = [];
+
 
 const animeLinks = [
   { href: "/anime/#now", sectionId: "now", label: animeCopy.nav.now },
-  { href: "/anime/#favorites", sectionId: "favorites", label: animeCopy.nav.favorites },
+  { href: "/anime/#titles", sectionId: "titles", label: animeCopy.nav.titles },
   { href: "/anime/#notes", sectionId: "notes", label: animeCopy.nav.notes }
 ];
 
@@ -47,9 +43,9 @@ export function SiteHeader({ mode }: SiteHeaderProps) {
   const currentMode = mode ?? getModeFromPath(pathname);
   const links = currentMode === "games" ? gamesLinks : currentMode === "anime" ? animeLinks : currentMode === "main" ? mainLinks : [];
   const sectionIds = currentMode === "games"
-    ? ["games-home", "archive", "favorites", "notes"]
+    ? ["counter"]
     : currentMode === "anime"
-      ? ["anime-home", "now", "favorites", "notes"]
+      ? ["anime-home", "now", "favorites", "titles", "notes"]
       : currentMode === "main"
         ? ["home", "about", "now", "garden", "contact"]
         : ["side-home"];

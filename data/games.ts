@@ -7,6 +7,9 @@ export const gamesCopy = {
     notes: { zh: "单机手记", en: "Solo Notes" }
   },
   hero: {
+    status: { zh: "档案在线", en: "Archive online" },
+    mode: { zh: "单机模式", en: "Solo mode" },
+    profile: { zh: "玩家 7656", en: "Player 7656" },
     description: {
       zh: "比起输赢，我更喜欢独自进入一个完整世界，沿着自己的节奏探索、选择，并记住那些只属于这段旅程的瞬间。",
       en: "More than winning or losing, I enjoy entering complete worlds alone, exploring and choosing at my own pace, and keeping the moments unique to each journey."

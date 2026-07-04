@@ -14,7 +14,7 @@ export function ArticlePageContent({ article }: { article: ArticleWithContent })
   const { language, t } = useLanguage();
   const backLink = {
     main: { href: "/#garden", label: siteCopy.garden.backHome },
-    games: { href: "/games/#notes", label: gamesCopy.notes.back },
+    games: { href: "/games/", label: gamesCopy.notes.back },
     anime: { href: "/anime/#notes", label: animeCopy.notes.back }
   }[article.channel];
 
