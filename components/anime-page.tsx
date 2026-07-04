@@ -28,7 +28,7 @@ export function AnimePage() {
   return (
     <>
       <section id="anime-home" className="border-b border-foreground px-4 pb-14 pt-24 sm:px-8 sm:pb-20 sm:pt-28" aria-labelledby="anime-title">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.62fr_1.38fr] lg:items-center lg:gap-12">
+        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-12">
           <Reveal>
             <div className="min-w-0 py-4 lg:py-8">
               <h1 id="anime-title" className="text-6xl font-black leading-[0.88] sm:text-8xl lg:text-[7rem]">ANIME</h1>
@@ -40,7 +40,7 @@ export function AnimePage() {
 
           <Reveal delay={0.08}>
             <div className="anime-hero-stage">
-              <div className="relative aspect-[16/9] min-h-60 overflow-hidden border-2 border-accent bg-surface sm:min-h-80">
+              <div className="anime-hero-image relative aspect-[3/2] overflow-hidden border-2 border-accent bg-surface">
                 <Image
                   key={heroScene.id}
                   src={assetPath(heroScene.image)}
@@ -78,7 +78,7 @@ export function AnimePage() {
                 <ScenePanel
                   scene={scene}
                   selected={activeSceneId === scene.id}
-                  large={index === 0}
+                  large={false}
                   label={t(scene.label)}
                   alt={t(scene.alt)}
                   onSelect={() => setActiveSceneId(scene.id)}
@@ -119,23 +119,25 @@ export function AnimePage() {
             {animeTitles.map((entry, index) => (
               <Reveal key={entry.id} delay={index * 0.04}>
                 <article className="anime-title-card group">
-                  <div className="relative aspect-[4/3] overflow-hidden border-b border-foreground">
+                  <div className="anime-title-thumb relative shrink-0 overflow-hidden border-r border-foreground">
                     <Image
                       src={assetPath(entry.image)}
                       alt=""
                       fill
-                      sizes="(min-width: 1280px) 22vw, (min-width: 640px) 44vw, 100vw"
+                      sizes="128px"
                       className="anime-ink-image object-cover transition duration-300 group-hover:scale-[1.02]"
                       style={{ objectPosition: entry.objectPosition }}
                     />
-                    <span className="absolute left-3 top-3 bg-accent px-2 py-1 font-mono text-[10px] font-bold text-white">{t(animeCopy.titles.pending)}</span>
-                    <span className="absolute bottom-3 right-3 border border-foreground bg-background px-2 py-1 font-mono text-[10px]">{entry.year}</span>
+                    <span className="absolute bottom-2 right-2 border border-foreground bg-background px-2 py-1 font-mono text-[10px]">{entry.year}</span>
                   </div>
-                  <div className="p-5">
-                    <span className="font-mono text-[10px] text-accent">TITLE {String(index + 1).padStart(2, "0")} // {t(entry.theme)}</span>
+                  <div className="min-w-0 flex-1 p-5">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="bg-accent px-2 py-1 font-mono text-[9px] font-bold text-white">{t(animeCopy.titles.pending)}</span>
+                      <span className="font-mono text-[10px] text-accent">TITLE {String(index + 1).padStart(2, "0")} // {t(entry.theme)}</span>
+                    </div>
                     <h3 className="mt-3 text-xl font-black leading-tight">{t(entry.title)}</h3>
                     <p className="mt-1 text-xs text-muted">{entry.originalTitle}</p>
-                    <p className="mt-4 text-sm leading-7 text-muted">{t(entry.description)}</p>
+                    <p className="mt-3 text-sm leading-7 text-muted">{t(entry.description)}</p>
                   </div>
                 </article>
               </Reveal>
@@ -148,8 +150,8 @@ export function AnimePage() {
           <Reveal><AnimeHeading index={animeCopy.notes.index} id="anime-notes-title" title={t(animeCopy.notes.title)} description={t(animeCopy.notes.description)} /></Reveal>
           <Reveal delay={0.06}>
             <div className="anime-notes-layout">
-              <div className="relative min-h-64 overflow-hidden border-2 border-foreground sm:min-h-80">
-                <Image src={assetPath("/side-b/notes.webp")} alt={language === "zh" ? "动画手记桌面的钢笔插画" : "Ink illustration of an anime notes desk"} fill sizes="(min-width: 1280px) 38vw, (min-width: 768px) 55vw, 100vw" className="anime-ink-image object-cover" />
+              <div className="anime-notes-image relative min-h-48 overflow-hidden border-2 border-foreground sm:min-h-56">
+                <Image src={assetPath("/side-b/notes.webp")} alt={language === "zh" ? "动画手记桌面的钢笔插画" : "Ink illustration of an anime notes desk"} fill sizes="(min-width: 1280px) 24vw, (min-width: 768px) 38vw, 100vw" className="anime-ink-image object-cover" />
               </div>
               <div className="flex min-h-56 flex-col justify-between border-x-2 border-b-2 border-foreground p-6 sm:p-8 md:border-l-0 md:border-t-2 xl:border-r-0">
                 <span className="font-mono text-xs text-accent">PERSONAL ARCHIVE // 001</span>
