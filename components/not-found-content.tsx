@@ -4,13 +4,15 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { siteCopy } from "@/data/site";
 import { useLanguage } from "@/components/language-provider";
+import styles from "@/components/personal-homepage.module.css";
 
 export function NotFoundContent() {
   const { t } = useLanguage();
 
   return (
-    <main className="min-h-screen bg-background px-5 pt-28 text-foreground sm:px-8 sm:pt-36">
+    <div className={`${styles.page} min-h-screen`}>
       <SiteHeader />
+      <main className="px-5 py-12 sm:px-8">
       <section className="mx-auto flex min-h-[68vh] max-w-3xl flex-col justify-center border-y border-line py-16">
         <p className="text-sm uppercase text-accent">404</p>
         <h1 className="mt-6 font-chinese text-4xl font-semibold leading-tight sm:text-6xl">
@@ -24,6 +26,7 @@ export function NotFoundContent() {
           {t(siteCopy.notFound.action)}
         </Link>
       </section>
-    </main>
+      </main>
+    </div>
   );
 }

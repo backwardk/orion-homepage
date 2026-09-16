@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LanguageToggle } from "@/components/language-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { PersonalHeader } from "@/components/personal-header";
 import { animeCopy } from "@/data/anime";
 import { siteCopy } from "@/data/site";
 import { useLanguage } from "@/components/language-provider";
@@ -74,6 +75,8 @@ export function SiteHeader({ mode }: SiteHeaderProps) {
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, [currentMode]);
+
+  if (currentMode === "main") return <PersonalHeader />;
 
   return (
     <header className="fixed left-0 right-0 top-0 z-40 border-b border-line/60 bg-background/90 text-foreground backdrop-blur-xl">

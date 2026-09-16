@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
-import { animeCopy } from "@/data/anime";
-import { gamesCopy } from "@/data/games";
 import { siteCopy } from "@/data/site";
 import { formatDate } from "@/lib/format-date";
 import { renderMarkdown } from "@/lib/markdown";
@@ -12,14 +10,10 @@ import { useLanguage } from "@/components/language-provider";
 
 export function ArticlePageContent({ article }: { article: ArticleWithContent }) {
   const { language, t } = useLanguage();
-  const backLink = {
-    main: { href: "/#garden", label: siteCopy.garden.backHome },
-    games: { href: "/games/", label: gamesCopy.notes.back },
-    anime: { href: "/anime/#notes", label: animeCopy.notes.back }
-  }[article.channel];
+  const backLink = { href: "/#garden", label: siteCopy.garden.backHome };
 
   return (
-    <article className="px-5 pb-28 pt-28 sm:px-8 sm:pt-36">
+    <article className="px-5 pb-20 pt-10 sm:px-8 sm:pt-14">
       <div className="mx-auto max-w-3xl">
         <Link
           href={backLink.href}
@@ -37,7 +31,7 @@ export function ArticlePageContent({ article }: { article: ArticleWithContent })
             <span aria-hidden="true">/</span>
             <span>{t(article.readingTime)}</span>
           </div>
-          <h1 className="mt-6 font-chinese text-4xl font-semibold leading-tight sm:text-6xl">
+          <h1 className="mt-6 font-chinese text-3xl font-semibold leading-snug sm:text-4xl">
             {t(article.title)}
           </h1>
           <p className="mt-6 text-lg leading-8 text-muted sm:text-xl sm:leading-9">{t(article.summary)}</p>

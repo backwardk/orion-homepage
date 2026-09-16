@@ -1,6 +1,17 @@
 # Orion Jiang Personal Homepage
 
-一个现代、简洁、具有个人气质的响应式个人主页，也是后续长期维护的数字花园入口。
+蒋荞宇的个人主页：介绍自己、记录喜欢的东西，也认识聊得来的玩伴。
+
+## 当前版本
+
+- 首页顺序：个人介绍、喜欢的东西、最近的记录、认识一下。
+- 六款游戏封面可直接展开个人感想，无需抽卡或解锁；中文感想沿用已确认的内容。
+- 尚未确认的动画片单和原有模拟旅行、学习文章不在新版首页展示。
+- 首页文案及双语游戏名：`data/home.ts`；个人资料与邮箱：`data/site-config.ts`。
+- 游戏封面、特点和个人感想：`data/game-cartridges.ts`；文章正文：`content/articles/`。
+- 页面结构：`components/personal-homepage.tsx`；局部样式：`components/personal-homepage.module.css`。
+- 邮箱支持一键复制，语言设置会保存在当前浏览器中。
+- 原 Games、Anime、Side B 页面保留供回顾，不再作为新版首页导航入口。
 
 ## 技术栈
 
@@ -17,11 +28,9 @@
 - 响应式首页，适配手机、平板、桌面
 - 浅色 / 深色模式切换
 - 中文 / 英文切换
-- Home / Games / Anime 三频道切换
-- Hero、关于、最近在做什么、兴趣、数字花园、今日一句、联系区
-- Games：Steam 时长排行、游戏偏好和游戏手记
-- Anime：追番状态、动画偏好和动画手记
-- Side B：Games 与 Anime 的频道入口
+- 以个人介绍为中心的单页阅读布局
+- 游戏个人感想可直接展开，文章可直接阅读
+- Email、Steam、GitHub 联系入口
 - 今日一句在两条内容之间随刷新轮换
 - 本地 Markdown 文章详情页
 - sitemap、robots、Open Graph 图片、404 页面

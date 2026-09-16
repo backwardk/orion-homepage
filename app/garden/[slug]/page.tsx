@@ -4,6 +4,7 @@ import { ArticlePageContent } from "@/components/article-page-content";
 import { SiteHeader } from "@/components/site-header";
 import { getArticleSlugs, getArticleWithContent } from "@/lib/articles";
 import { siteConfig } from "@/data/site-config";
+import styles from "@/components/personal-homepage.module.css";
 
 type ArticlePageProps = {
   params: Promise<{
@@ -59,13 +60,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   }
 
   return (
-    <main
-      className={`min-h-screen bg-background text-foreground ${
-        article.channel === "games" ? "games-shell" : article.channel === "anime" ? "anime-shell" : ""
-      }`}
-    >
-      <SiteHeader mode={article.channel} />
-      <ArticlePageContent article={article} />
-    </main>
+    <div className={`${styles.page} min-h-screen`}>
+      <SiteHeader mode="main" />
+      <main><ArticlePageContent article={article} /></main>
+    </div>
   );
 }

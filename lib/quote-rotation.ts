@@ -5,11 +5,15 @@ export function getNextQuoteIndex(total: number): number {
     return 0;
   }
 
-  const previousIndex = Number(window.localStorage.getItem(storageKey));
-  const safePreviousIndex = Number.isInteger(previousIndex) ? previousIndex : -1;
-  const nextIndex = (safePreviousIndex + 1) % total;
-
-  window.localStorage.setItem(storageKey, String(nextIndex));
-
-  return nextIndex;
+  try {
+    const saved = window.localStorage.getItem(storageKey);
+    const previousIndex = saved === null ? -1 : Number(saved);
+    const safePreviousIndex = Number.isInteger(previousIndex) && previousIndex >= 0 && previousIndex < total ? previousIndex : -1;
+    const nextIndex = (safePreviousIndex + 1) % total;
+    window.localStorage.setItem(storageKey, String(nextIndex));
+    return nextIndex;
+  } catch {
+    // 隐私模式禁用存储时继续展示默认句子。
+    return 0;
+  }
 }

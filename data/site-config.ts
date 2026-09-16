@@ -9,7 +9,7 @@ export const siteConfig = {
   siteUrl: "https://backwardk.github.io/orion-homepage",
   ogImage: "/og-image.svg",
   description: {
-    zh: "蒋荞宇的个人主页与数字花园。记录成长，探索世界，保持好奇。",
-    en: "Orion Jiang's personal homepage and digital garden for learning, observation, and curiosity."
+    zh: "你好，我是蒋荞宇。喜欢游戏和动画，记录游玩感想、喜欢的片段和日常，也期待认识聊得来的玩伴。",
+    en: "Hi, I'm Orion Jiang. I enjoy games and anime, keep personal notes, and hope to meet people to share stories and discoveries with."
   }
 } as const;
