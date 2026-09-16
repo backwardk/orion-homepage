@@ -82,8 +82,8 @@ export function SiteHeader({ mode }: SiteHeaderProps) {
           <span className="hidden sm:inline">Orion Jiang</span>
           <span className="sm:hidden">OJ</span>
         </Link>
-        <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-          <nav aria-label="Site channels" className="grid w-[174px] grid-cols-3 border border-line bg-surface/60 p-0.5 text-center">
+        <div className="flex min-w-0 items-center gap-1 sm:gap-3">
+          <nav aria-label="Site channels" className="grid w-36 shrink-0 grid-cols-3 border border-line bg-surface/60 p-0.5 text-center sm:w-[174px]">
             {tabs.map((tab) => {
               const selected = currentMode === tab.mode;
               return (
@@ -91,7 +91,7 @@ export function SiteHeader({ mode }: SiteHeaderProps) {
                   key={tab.mode}
                   href={tab.href}
                   aria-current={selected ? "page" : undefined}
-                  className={`px-1 py-1.5 text-[10px] font-semibold uppercase transition sm:text-[11px] ${
+                  className={`flex min-h-10 items-center justify-center px-1 text-[10px] font-semibold uppercase transition sm:text-[11px] ${
                     selected ? "bg-foreground text-background" : "text-muted hover:bg-accent/10 hover:text-foreground"
                   }`}
                 >

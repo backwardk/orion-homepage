@@ -22,7 +22,7 @@ export const animeCopy = {
     }
   },
   favorites: {
-    index: "02",
+    index: "01",
     title: { zh: "偏爱的动画气质", en: "Favorite Moods" },
     description: {
       zh: "不是作品排行榜，而是构成我个人动画审美的四种线索。",
@@ -30,16 +30,16 @@ export const animeCopy = {
     }
   },
   titles: {
-    index: "03",
-    title: { zh: "真实作品候选", en: "Real Titles, To Confirm" },
+    index: "02",
+    title: { zh: "候选片单", en: "Title Shelf" },
     description: {
-      zh: "先用真实作品建立展示效果，但不代表我的观看记录或最终喜好；确认后再改成个人片单。",
-      en: "Real titles establish the visual structure, but do not yet represent my viewing history or final favorites."
+      zh: "暂存的候选作品，尚未确认为个人观看记录。",
+      en: "A provisional selection, not yet confirmed as my viewing history."
     },
     pending: { zh: "待确认", en: "To confirm" }
   },
   notes: {
-    index: "04",
+    index: "03",
     title: { zh: "动画手记", en: "Anime Notes" },
     description: {
       zh: "一篇手记可以从画面、音乐、角色或一次观看后的心情开始。",

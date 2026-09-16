@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, MotionConfig, motion, useReducedMotion } from "framer-motion";
 import {
   Archive,
   ArrowUpRight,
@@ -42,6 +42,7 @@ function assetPath(path: string) {
 
 export function GamesPage() {
   const { language, t } = useLanguage();
+  const reduceMotion = useReducedMotion();
   const [activeTab, setActiveTab] = useState<ShopTab>("counter");
   const [collectedIds, setCollectedIds] = useState<string[]>([]);
   const [fragments, setFragments] = useState(0);
@@ -106,7 +107,7 @@ export function GamesPage() {
 
   function selectCartridge(cartridgeId: string) {
     setSelectedId(cartridgeId);
-    requestAnimationFrame(() => detailRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }));
+    requestAnimationFrame(() => detailRef.current?.scrollIntoView({ behavior: reduceMotion ? "instant" : "smooth", block: "nearest" }));
   }
 
   function resetSession() {
@@ -131,15 +132,16 @@ export function GamesPage() {
         : t(gameShopCopy.counter.firstHint);
 
   return (
-    <div className="game-shop min-h-screen px-4 pb-10 pt-24 sm:px-7 sm:pb-16 sm:pt-28">
-      <div className="mx-auto max-w-7xl">
+    <MotionConfig reducedMotion="user">
+    <div className="game-shop min-h-screen px-4 pb-10 pt-20 sm:px-7 sm:pb-16 sm:pt-24">
+      <div className="mx-auto max-w-6xl">
         <header className="game-shop-sign">
           <div>
             <p className="game-shop-kicker">PLAYER ARCHIVE // STORE 01</p>
             <h1 className="game-shop-title">{t(gameShopCopy.title)}</h1>
             <p className="mt-3 max-w-2xl text-sm leading-7 text-muted sm:text-base">{t(gameShopCopy.subtitle)}</p>
           </div>
-          <button type="button" onClick={resetSession} className="game-shop-reset" aria-label={t(gameShopCopy.actions.reset)}>
+          <button type="button" onClick={resetSession} disabled={drawCount === 0 && !isDrawing} className="game-shop-reset" aria-label={t(gameShopCopy.actions.reset)} title={t(gameShopCopy.actions.reset)}>
             <RefreshCw className="size-4" aria-hidden="true" />
             <span>{t(gameShopCopy.actions.reset)}</span>
           </button>
@@ -175,16 +177,16 @@ export function GamesPage() {
           })}
         </nav>
 
-        <main className="game-shop-window">
+        <div className="game-shop-window">
           <AnimatePresence mode="wait" initial={false}>
             {activeTab === "counter" ? (
               <motion.section key="counter" id="counter" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.2 }} className="game-counter" aria-labelledby="counter-title">
                 <div className="game-counter-copy">
                   <p className="game-shop-kicker">{t(gameShopCopy.counter.eyebrow)}</p>
-                  <h2 id="counter-title" className="mt-4 text-3xl font-black leading-tight sm:text-5xl">{t(gameShopCopy.counter.title)}</h2>
+                  <h2 id="counter-title" className="mt-3 text-2xl font-black leading-snug sm:text-3xl">{t(gameShopCopy.counter.title)}</h2>
                   <p className="mt-5 max-w-xl leading-8 text-muted">{t(gameShopCopy.counter.description)}</p>
 
-                  <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                  <div className="mt-6 grid grid-cols-3 gap-2">
                     {gameCartridges.map((cartridge) => (
                       <span key={cartridge.id} className={`game-counter-slot ${collectedSet.has(cartridge.id) ? "is-collected" : ""}`}>
                         {collectedSet.has(cartridge.id) ? cartridge.title : "???"}
@@ -236,16 +238,21 @@ export function GamesPage() {
                     </AnimatePresence>
                   </div>
 
-                  <p className={`game-outcome ${drawOutcome ? "has-result" : ""}`}>{outcomeText}</p>
-                  {complete ? (
-                    <button type="button" className="game-draw-button is-complete" onClick={() => setActiveTab("notes")}>
-                      <Sparkles className="size-5" aria-hidden="true" />{t(gameShopCopy.counter.complete)}
+                  <p role="status" aria-atomic="true" className={`game-outcome ${drawOutcome ? "has-result" : ""}`}>{outcomeText}</p>
+                  <div className="game-counter-actions">
+                    {complete ? (
+                      <button type="button" className="game-draw-button is-complete" onClick={() => setActiveTab("notes")}>
+                        <Sparkles className="size-5" aria-hidden="true" />{t(gameShopCopy.counter.complete)}
+                      </button>
+                    ) : (
+                      <button type="button" className="game-draw-button" onClick={drawCartridge} disabled={isDrawing}>
+                        <PackageOpen className="size-5" aria-hidden="true" />{isDrawing ? t(gameShopCopy.counter.drawing) : t(gameShopCopy.counter.draw)}
+                      </button>
+                    )}
+                    <button type="button" className="game-memory-link" onClick={() => setActiveTab("collection")}>
+                      <BookOpen className="size-4" aria-hidden="true" />{t(latestCartridge ? gameShopCopy.collection.memory : gameShopCopy.tabs.collection)}<ArrowUpRight className="size-4" aria-hidden="true" />
                     </button>
-                  ) : (
-                    <button type="button" className="game-draw-button" onClick={drawCartridge} disabled={isDrawing}>
-                      <PackageOpen className="size-5" aria-hidden="true" />{isDrawing ? t(gameShopCopy.counter.drawing) : t(gameShopCopy.counter.draw)}
-                    </button>
-                  )}
+                  </div>
                   <p className="mt-3 text-center text-xs leading-5 text-muted">{t(gameShopCopy.counter.session)}</p>
                 </div>
               </motion.section>
@@ -261,7 +268,7 @@ export function GamesPage() {
                   })}
                 </div>
                 {selectedCartridge && collectedSet.has(selectedCartridge.id) ? (
-                  <div ref={detailRef}>
+                  <div ref={detailRef} className="scroll-mt-36">
                     <CartridgeDetail cartridge={selectedCartridge} memoryLabel={t(gameShopCopy.collection.memory)} playtimeLabel={t(gameShopCopy.collection.playtime)} t={t} />
                   </div>
                 ) : null}
@@ -305,7 +312,7 @@ export function GamesPage() {
                 </div>
                 <div className="game-notes-copy">
                   <p className="game-shop-kicker">{t(gameShopCopy.notes.eyebrow)}</p>
-                  <h2 id="notes-title" className="mt-5 text-3xl font-black leading-tight sm:text-5xl">{t(gameShopCopy.notes.title)}</h2>
+                  <h2 id="notes-title" className="mt-4 text-2xl font-black leading-snug sm:text-3xl">{t(gameShopCopy.notes.title)}</h2>
                   <p className="mt-6 leading-8 text-muted">{complete ? t(gameShopCopy.notes.unlocked) : t(gameShopCopy.notes.locked)}</p>
                   {complete ? (
                     <Link href="/garden/single-player-games/" className="game-note-link">{t(gameShopCopy.notes.read)}<ArrowUpRight className="size-4" /></Link>
@@ -316,9 +323,10 @@ export function GamesPage() {
               </motion.section>
             ) : null}
           </AnimatePresence>
-        </main>
+        </div>
       </div>
     </div>
+    </MotionConfig>
   );
 }
 
@@ -356,8 +364,8 @@ function CartridgeShelfItem({ cartridge, index, unlocked, selected, lockedLabel,
 function CartridgeDetail({ cartridge, memoryLabel, playtimeLabel, t }: { cartridge: GameCartridge; memoryLabel: string; playtimeLabel: string; t: (text: { zh: string; en: string }) => string }) {
   return (
     <article className={`game-cartridge-detail accent-${cartridge.accent}`}>
-      <div className="relative min-h-64 overflow-hidden sm:min-h-80">
-        <Image src={assetPath(cartridge.coverImage)} alt={`${cartridge.title} cover`} fill sizes="(min-width: 768px) 36vw, 100vw" className="object-cover" />
+      <div className="game-detail-cover relative overflow-hidden">
+        <Image src={assetPath(cartridge.coverImage)} alt={`${cartridge.title} cover`} fill sizes="(min-width: 768px) 224px, 160px" className="object-contain" />
       </div>
       <div className="game-cartridge-memory">
         <div className="flex flex-wrap items-start justify-between gap-4">

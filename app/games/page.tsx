@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function GamesRoute() {
   return (
-    <main className="games-shell min-h-screen overflow-hidden bg-background text-foreground">
+    <main className="games-shell min-h-screen overflow-x-clip bg-background text-foreground">
       <SiteHeader mode="games" />
       <GamesPage />
     </main>

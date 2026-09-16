@@ -139,11 +139,11 @@ body {
 }
 
 .games-shell {
-  --color-background: 246 244 236;
+  --color-background: 245 248 246;
   --color-foreground: 31 36 35;
   --color-muted: 98 105 101;
   --color-accent: 34 132 123;
-  --color-surface: 255 253 246;
+  --color-surface: 255 255 252;
   --color-line: 197 198 188;
   --game-coral: 224 102 82;
   --game-yellow: 225 174 61;
@@ -172,14 +172,11 @@ body {
 
 .game-shop-sign {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  border: 1px solid rgb(var(--color-line));
-  border-top: 5px solid rgb(var(--game-coral));
-  background: rgb(var(--color-surface) / 0.96);
-  padding: 1.5rem;
-  box-shadow: 8px 8px 0 rgb(var(--color-accent) / 0.12);
+  border-bottom: 1px solid rgb(var(--color-line));
+  padding: 0 0 1.25rem;
 }
 
 .game-shop-kicker {
@@ -192,10 +189,10 @@ body {
 
 .game-shop-title {
   margin-top: 0.65rem;
-  font-size: clamp(2.25rem, 7vw, 5.5rem);
+  font-size: 2.5rem;
   font-weight: 900;
-  line-height: 0.95;
-  text-shadow: 4px 4px 0 rgb(var(--game-yellow) / 0.35);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .game-shop-reset,
@@ -229,6 +226,22 @@ body {
   margin-top: 1.25rem;
   border: 1px solid rgb(var(--color-line));
   background: rgb(var(--color-surface));
+}
+
+.game-shop-reset {
+  flex-shrink: 0;
+}
+
+.game-shop-reset:disabled {
+  opacity: 0.45;
+  cursor: default;
+  transform: none;
+}
+
+.game-shop :is(button, a):focus-visible,
+.anime-shell :is(button, a):focus-visible {
+  outline: 2px solid rgb(var(--color-accent));
+  outline-offset: 4px;
 }
 
 .game-shop-stat {
@@ -280,6 +293,9 @@ body {
 }
 
 .game-shop-tabs {
+  position: sticky;
+  top: 4rem;
+  z-index: 20;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: 1.25rem;
@@ -294,13 +310,22 @@ body {
   min-height: 3.25rem;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
+  gap: 0.4rem;
   background: rgb(var(--color-surface));
   padding: 0.75rem 0.6rem;
   font-size: 0.78rem;
   font-weight: 800;
   color: rgb(var(--color-muted));
   transition: background-color 160ms ease, color 160ms ease;
+}
+
+.game-shop-tab > svg {
+  flex-shrink: 0;
+}
+
+.game-shop-tab > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .game-shop-tab:hover,
@@ -316,18 +341,15 @@ body {
 }
 
 .game-shop-window {
-  min-height: 42rem;
+  min-height: 30rem;
   margin-top: 1px;
-  border: 1px solid rgb(var(--color-line));
-  background: rgb(var(--color-surface) / 0.97);
-  padding: clamp(1rem, 3vw, 2.5rem);
-  box-shadow: 10px 10px 0 rgb(var(--game-coral) / 0.1);
+  padding: 1.5rem 0;
 }
 
 .game-counter {
   display: grid;
   min-width: 0;
-  gap: clamp(2rem, 5vw, 5rem);
+  gap: 2rem;
 }
 
 .game-counter-copy,
@@ -401,21 +423,18 @@ body {
 }
 
 .game-draw-counter {
-  border: 1px solid rgb(var(--color-line));
-  background:
-    repeating-linear-gradient(135deg, transparent 0 16px, rgb(var(--color-accent) / 0.045) 16px 17px),
-    rgb(var(--color-background));
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .game-draw-display {
   display: grid;
-  min-height: 25rem;
+  height: 23rem;
   place-items: center;
   overflow: hidden;
   border: 1px solid rgb(var(--color-line));
   background: rgb(var(--color-surface));
-  padding: 1.25rem;
+  padding: 1rem;
   perspective: 900px;
 }
 
@@ -435,7 +454,7 @@ body {
 }
 
 .game-result-cartridge {
-  width: min(100%, 16.5rem);
+  width: min(100%, 11rem);
   border: 8px solid rgb(var(--color-foreground));
   background: rgb(var(--color-foreground));
   box-shadow: 9px 9px 0 var(--cartridge-accent);
@@ -491,7 +510,7 @@ body {
   padding: 0.85rem 1rem;
   font-size: 0.9rem;
   font-weight: 900;
-  color: white;
+  color: rgb(28 28 28);
   box-shadow: 5px 5px 0 rgb(var(--color-foreground));
   transition: transform 160ms ease, box-shadow 160ms ease;
 }
@@ -509,7 +528,25 @@ body {
 }
 
 .game-draw-button.is-complete {
-  background: rgb(var(--color-accent));
+  background: rgb(var(--game-yellow));
+}
+
+.game-counter-actions {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.game-memory-link {
+  display: inline-flex;
+  min-height: 2.75rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: rgb(var(--color-accent));
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .game-section-intro {
@@ -519,9 +556,9 @@ body {
 }
 
 .game-section-intro h2 {
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: 2rem;
   font-weight: 900;
-  line-height: 1;
+  line-height: 1.25;
 }
 
 .game-section-intro > p:last-child {
@@ -539,7 +576,7 @@ body {
 
 .game-shelf-cartridge {
   min-width: 0;
-  aspect-ratio: 8 / 13;
+  aspect-ratio: 2 / 3;
   border: 0;
   background: transparent;
   padding: 0;
@@ -620,7 +657,7 @@ body {
 
 .game-cartridge-back > strong {
   margin-top: 0.45rem;
-  font-size: clamp(0.78rem, 1.2vw, 1rem);
+  font-size: 0.875rem;
   line-height: 1.25;
 }
 
@@ -631,7 +668,7 @@ body {
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 8;
-  font-size: clamp(0.66rem, 1vw, 0.75rem);
+  font-size: 0.8125rem;
   line-height: 1.65;
   color: rgb(var(--color-muted));
 }
@@ -651,6 +688,10 @@ body {
   min-height: 0;
   flex: 1;
   overflow: hidden;
+}
+
+.game-shelf-cover img {
+  object-fit: contain;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -735,7 +776,7 @@ body {
 
 .game-cartridge-memory h3 {
   margin-top: 0.35rem;
-  font-size: clamp(1.65rem, 4vw, 2.6rem);
+  font-size: 1.75rem;
   font-weight: 900;
 }
 
@@ -794,7 +835,7 @@ body {
 
 .game-archive-stats strong {
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-size: 1.25rem;
   color: rgb(var(--color-accent));
 }
 
@@ -878,12 +919,12 @@ body {
 
 .game-notes-room {
   display: grid;
-  min-height: 34rem;
+  min-height: 0;
 }
 
 .game-notes-illustration {
   position: relative;
-  min-height: 20rem;
+  min-height: 14rem;
   overflow: hidden;
   border: 1px solid rgb(var(--color-line));
 }
@@ -923,7 +964,10 @@ body {
 }
 
 @media (min-width: 768px) {
-  .game-cartridge-detail,
+  .game-cartridge-detail {
+    grid-template-columns: 14rem minmax(0, 1fr);
+  }
+
   .game-notes-room {
     grid-template-columns: minmax(15rem, 0.78fr) minmax(0, 1.22fr);
   }
@@ -945,35 +989,49 @@ body {
   }
 }
 
-@media (min-width: 1280px) {
-  .game-collection-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+.game-detail-cover {
+  min-height: 20rem;
+  background: rgb(var(--color-surface));
+}
+
+@media (max-width: 1023px) {
+  .game-draw-counter {
+    grid-row: 1;
+    width: 100%;
+    max-width: 30rem;
+    justify-self: center;
   }
 }
 
 @media (max-width: 639px) {
   .game-shop-sign {
     align-items: flex-start;
-    flex-direction: column;
-    gap: 1.25rem;
-    padding: 1.1rem;
+    gap: 0.75rem;
+    padding: 0 0 1rem;
   }
 
   .game-shop-title {
-    text-shadow: 3px 3px 0 rgb(var(--game-yellow) / 0.35);
+    font-size: 1.75rem;
   }
 
   .game-shop-reset {
-    align-self: stretch;
+    width: 2.75rem;
+    padding: 0;
+  }
+
+  .game-shop-reset span {
+    display: none;
   }
 
   .game-shop-status {
-    grid-template-columns: 1fr;
+    margin-top: 0.75rem;
   }
 
   .game-shop-stat {
-    border-right: 0;
-    border-bottom: 1px solid rgb(var(--color-line));
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.65rem;
   }
 
   .game-shop-stat:nth-child(3) {
@@ -981,23 +1039,41 @@ body {
   }
 
   .game-shop-tabs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 0.75rem;
+  }
+
+  .game-shop-tab {
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.6rem 0.2rem;
+    font-size: 0.6875rem;
+  }
+
+  .game-shop-tab > svg:last-child:not(:first-child) {
+    display: none;
   }
 
   .game-shop-window {
-    min-height: 38rem;
-    padding: 0.8rem;
-    box-shadow: 5px 5px 0 rgb(var(--game-coral) / 0.1);
+    min-height: 0;
+    padding: 1rem 0;
   }
 
   .game-draw-display {
-    min-height: 21rem;
+    height: 18.5rem;
+    padding: 0.5rem;
   }
 
-  .game-draw-button {
-    position: sticky;
-    bottom: 0.75rem;
-    z-index: 4;
+  .game-result-cartridge {
+    width: min(100%, 8.75rem);
+  }
+
+  .game-counter-actions {
+    order: -1;
+    margin-bottom: 1rem;
+  }
+
+  .game-detail-cover {
+    min-height: 15rem;
   }
 
   .game-archive-footer {
@@ -1006,11 +1082,11 @@ body {
   }
 }
 .anime-shell {
-  --color-background: 252 249 244;
+  --color-background: 250 250 249;
   --color-foreground: 36 35 38;
   --color-muted: 111 104 105;
-  --color-accent: 224 101 112;
-  --color-surface: 255 253 249;
+  --color-accent: 170 61 82;
+  --color-surface: 255 255 255;
   --color-line: 220 210 204;
   background: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
@@ -1044,7 +1120,7 @@ body {
 }
 
 .anime-hero-image {
-  max-height: 26rem;
+  max-height: 18rem;
 }
 
 .anime-hero-controls {
@@ -1080,13 +1156,13 @@ body {
 .anime-arrow-button-primary {
   border-color: rgb(var(--color-accent));
   background: rgb(var(--color-accent));
-  color: white;
+  color: rgb(var(--color-background));
 }
 
 .anime-editorial-section {
   display: grid;
   min-width: 0;
-  gap: 2.5rem;
+  gap: 1.5rem;
 }
 
 .anime-section-heading {
@@ -1096,52 +1172,15 @@ body {
   gap: 1.25rem;
 }
 
-.anime-scene-grid {
-  display: grid;
-  min-width: 0;
-  gap: 0.75rem;
-}
-
-.anime-scene-panel {
-  position: relative;
-  display: block;
-  min-height: 9.5rem;
-  width: 100%;
-  overflow: hidden;
-  border: 2px solid rgb(var(--color-foreground));
-  background: rgb(var(--color-surface));
-  color: rgb(var(--color-foreground));
-  text-align: left;
-  transition: border-color 180ms ease, transform 180ms ease;
-}
-
-.anime-scene-panel:hover,
-.anime-scene-panel:focus-visible {
-  border-color: rgb(var(--color-accent));
-  outline: none;
-  transform: translateY(-2px);
-}
-
-.anime-scene-panel.is-active {
-  border-color: rgb(var(--color-accent));
-  box-shadow: inset 0 0 0 1px rgb(var(--color-accent));
-}
-
-.anime-scene-panel-large {
-  min-height: 9.5rem;
-}
-
 .anime-mood-grid {
   display: grid;
   min-width: 0;
-  border-left: 1px solid rgb(var(--color-foreground));
-  border-top: 1px solid rgb(var(--color-foreground));
+  gap: 0 1.5rem;
 }
 
 .anime-mood-grid > div {
   min-width: 0;
-  border-bottom: 1px solid rgb(var(--color-foreground));
-  border-right: 1px solid rgb(var(--color-foreground));
+  border-top: 1px solid rgb(var(--color-line));
 }
 
 .anime-mood-item {
@@ -1150,18 +1189,7 @@ body {
   min-width: 0;
   align-items: flex-start;
   gap: 1rem;
-  padding: 1rem;
-  background: rgb(var(--color-background));
-  transition: background-color 180ms ease;
-}
-
-.anime-mood-item:hover {
-  background: rgb(var(--color-surface));
-}
-
-.anime-notes-layout {
-  display: grid;
-  min-width: 0;
+  padding: 1rem 0;
 }
 
 .anime-title-grid {
@@ -1175,41 +1203,72 @@ body {
   min-height: 11rem;
   height: 100%;
   overflow: hidden;
-  border: 1px solid rgb(var(--color-foreground));
+  border: 1px solid rgb(var(--color-line));
+  border-radius: 4px;
   background: rgb(var(--color-surface));
-  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.anime-title-thumb {
-  width: 8rem;
+.anime-section-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
-.anime-notes-image {
-  max-height: 16rem;
+.anime-section-links a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgb(var(--color-accent));
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
-.anime-title-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 8px 8px 0 rgb(var(--color-accent) / 0.18);
+.anime-scene-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin-top: 0.5rem;
+}
+
+.anime-scene-selector button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 2px solid transparent;
+  font-size: 0.75rem;
+  color: rgb(var(--color-muted));
+}
+
+.anime-scene-selector button[aria-pressed="true"] {
+  border-color: rgb(var(--color-accent));
+  color: rgb(var(--color-accent));
+}
+
+.anime-pending-label {
+  border: 1px solid rgb(var(--color-line));
+  padding: 0.2rem 0.4rem;
+  font-size: 0.6875rem;
+  color: rgb(var(--color-muted));
+}
+
+.anime-notes-empty {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border-top: 1px solid rgb(var(--color-line));
+  padding: 1.5rem 0;
 }
 
 @media (min-width: 640px) {
-
-  .anime-scene-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 
   .anime-mood-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .anime-title-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 768px) {
-  .anime-notes-layout {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -1221,39 +1280,13 @@ body {
   }
 
   .anime-section-heading {
-    grid-template-columns: 3.5rem minmax(0, 1fr);
+    grid-template-columns: 1.5rem minmax(0, 1fr);
     gap: 1rem;
   }
 
-  .anime-scene-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .anime-scene-panel,
-  .anime-scene-panel-large {
-    min-height: 11rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .anime-mood-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .anime-notes-layout {
-    grid-template-columns: 0.65fr 1.15fr 0.55fr;
-  }
-
-  .anime-title-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 639px) {
-
-  .anime-title-thumb {
-    width: 6.5rem;
-  }
 
   .anime-hero-stage {
     padding-right: 0;
